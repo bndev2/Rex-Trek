@@ -1,0 +1,170 @@
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.Events;
+using UnityEngine.UI;
+
+public enum TurnState
+{
+    Moving,
+    Idle,
+}
+
+public class TurnManager : MonoBehaviour
+{
+    [SerializeField] private AudioSource _audioSource;
+    [SerializeField] private AudioClip _audioPlayerTurnStart;
+    [SerializeField] private AudioClip _audioEnemyTurnStart;
+
+    [SerializeField] protected UnityEvent _onTurnEnd;
+
+    [SerializeField] BoardManager _boardManager;
+    [SerializeField] Menus_Manager _menusManager;
+    [SerializeField] PlayerInputController _playerInputController;
+
+    [SerializeField] List<BoardPawn> _pawns;
+
+
+    // Dictionary to hold the number of turns each pawn gets during their next turn.
+    private Dictionary<BoardPawn, int> _pawnTurns = new Dictionary<BoardPawn, int>();
+    // The List to alternate between the pawns
+    private Queue<BoardPawn> _pawnTurnOrder = new Queue<BoardPawn>();
+
+    // The current pawn who's turn it is.
+    private BoardPawn _currentPawn;
+
+    private TurnState TurnState = TurnState.Idle;
+    private bool _isPlayerTurn = true;
+
+
+    private void Awake()
+    {
+        Initialize();
+    }
+
+    private void Initialize()
+    {
+        // Pack the pawns into the queue
+        foreach (BoardPawn pawn in _pawns)
+        {
+            _pawnTurnOrder.Enqueue(pawn);
+
+            pawn.Initialize(this);
+        }
+
+        // Add the pawns to the _pawnTurns dict with initial turns set to 1
+        foreach (BoardPawn pawn in _pawns)
+        {
+            _pawnTurns[pawn] = 1;
+        }
+
+        // Set the current pawn to the first pawn in the queue
+        if (_pawnTurnOrder.Count > 0)
+        {
+            _currentPawn = _pawnTurnOrder.Peek();
+        }
+    }
+
+
+    public void MoveAdditiveCurrent(int amountToMove)
+    {
+        if(_currentPawn == null)
+        {
+            Debug.LogError("Pawn null");
+        }
+
+        TurnState = TurnState.Moving;
+
+        _boardManager.SetPosition(_currentPawn, _boardManager.GetPositionOnBoardActual(_currentPawn) + amountToMove);
+    }
+
+    public void MoveAdditiveOverride(BoardPawn _pawn, int amountToMove)
+    {
+        MoveToFront(_pawn);
+
+        MoveAdditiveCurrent(amountToMove);
+    }
+
+    public void MoveToFront(BoardPawn pawn)
+    {
+        // Check if the pawn is in the queue
+        if (!_pawnTurnOrder.Contains(pawn))
+        {
+            Debug.LogError("Pawn not found in the turn order queue!");
+            return;
+        }
+
+        // Create a new queue and add the specific pawn to the front
+        Queue<BoardPawn> newQueue = new Queue<BoardPawn>();
+        newQueue.Enqueue(pawn);
+
+        // Dequeue all items from the old queue and enqueue them to the new queue
+        while (_pawnTurnOrder.Count > 0)
+        {
+            BoardPawn currentPawn = _pawnTurnOrder.Dequeue();
+            // Only enqueue the pawn if it is not the pawn we want to move to the front
+            if (!currentPawn.Equals(pawn))
+            {
+                newQueue.Enqueue(currentPawn);
+            }
+        }
+
+        // Replace the old queue with the new queue
+        _pawnTurnOrder = newQueue;
+    }
+
+
+    public void IncreaseTurns(BoardPawn pawn, int turnsToAdd)
+    {
+         _pawnTurns[pawn] += turnsToAdd;
+
+        _pawnTurns[pawn] = Mathf.Clamp(_pawnTurns[pawn], 1, int.MaxValue);
+    }
+
+    public void OnFinishMove(BoardPawn pawn)
+    {
+
+        _pawnTurns[_currentPawn] -= 1;
+
+        // If their turns are out switch to the next pawn
+        if (_pawnTurns[_currentPawn] <= 0)
+        {
+
+            _onTurnEnd.Invoke();
+
+            ResetTurns(pawn);
+
+            SwitchToNextTurn();
+        }
+    }
+
+    // Reset turns back to 1
+    public void ResetTurns(BoardPawn pawn)
+    {
+        _pawnTurns[pawn] = 1;
+    }
+
+    private void SwitchToNextTurn()
+    {
+        BoardPawn currentPawn = _pawnTurnOrder.Dequeue();
+
+        _pawnTurnOrder.Enqueue(currentPawn);
+
+        _currentPawn = _pawnTurnOrder.Peek();
+
+        if (_currentPawn.id == "Player")
+        {
+            _audioSource.PlayOneShot(_audioPlayerTurnStart);
+            _menusManager.ChangeTurnMenu(MenuType.PlayerTurn);
+            _playerInputController.ChangeState(PlayerInputController.InputState.Choosing);
+        }
+        else
+        {
+            _audioSource.PlayOneShot(_audioEnemyTurnStart);
+            _menusManager.ChangeTurnMenu(MenuType.EnemyTurn);
+        }
+    }
+
+
+}
