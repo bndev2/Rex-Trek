@@ -6,6 +6,7 @@ using UnityEngine;
 public enum MenuType
 {
     PlayerTurn,
+    Player2Turn,
     Persistent,
     EnemyTurn,
     Transition,
@@ -16,10 +17,12 @@ public class Menus_Manager : MonoBehaviour
     bool isBob = true;
 
     [SerializeField] GameObject _menuPlayerTurn;
+    [SerializeField] GameObject _menuPlayer2Turn;
     [SerializeField] GameObject _menuPersistent;
     [SerializeField] GameObject _menuEnemyTurn;
 
-    [SerializeField] GameObject _buttonRollDice;
+    [SerializeField] GameObject _buttonRollDicePlayer1;
+    [SerializeField] GameObject _buttonRollDicePlayer2;
 
     [SerializeField] UINotification _turnTransitionNotification;
 
@@ -37,10 +40,16 @@ public class Menus_Manager : MonoBehaviour
         switch (menuType)
         {
             case MenuType.PlayerTurn:
-                ExposeInput();
-                _turnTransitionNotification.Play("Player Turn");
+                ExposeInput(true);
+                _turnTransitionNotification.Play("Player 1 Turn");
                 _currentTurnMenu = _menuPlayerTurn;
                 _menuPlayerTurn.SetActive(true);
+                break;
+            case MenuType.Player2Turn:
+                ExposeInput(false);
+                _turnTransitionNotification.Play("Player 2 Turn");
+                _currentTurnMenu = _menuPlayer2Turn;
+                _menuPlayer2Turn.SetActive(true);
                 break;
             case MenuType.Persistent:
                 break;
@@ -54,14 +63,28 @@ public class Menus_Manager : MonoBehaviour
         }
     }
 
-    public void HideInput()
+    public void HideInput(bool isPlayer1)
     {
-        _buttonRollDice.SetActive(false);
+        if (isPlayer1)
+        {
+            _buttonRollDicePlayer1.SetActive(false);
+        }
+        else
+        {
+            _buttonRollDicePlayer2.SetActive(false);
+        }
     }
 
-    public void ExposeInput()
+    public void ExposeInput(bool isPlayer1)
     {
-        _buttonRollDice.SetActive(true);
+        if (isPlayer1)
+        {
+            _buttonRollDicePlayer1.SetActive(true);
+        }
+        else
+        {
+            _buttonRollDicePlayer2.SetActive(true);
+        }
     }
 
     public void PlayNotification(string message)

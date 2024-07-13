@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Drawing;
 using UnityEditor;
 using UnityEngine;
 
@@ -12,18 +11,14 @@ public enum BoardState
 
 public class BoardManager : MonoBehaviour
 {
-    [SerializeField] List<Transform> _squareTransforms;
-
-    // Positions of the squares
+    [SerializeField] private List<Transform> _squareTransforms;
     private List<Vector3> _squarePositions;
     private List<SquareController> _squareControllers;
+
     // Positions of the pawns on the board
-    [SerializeField] private List<BoardPawn> _pawns = new List<BoardPawn>();
+    [SerializeField] private List<List<BoardPawn>> _pawns;
 
-    // Player current and start index
     [SerializeField] private int _playerIndex = 0;
-
-    // References to the player and enemy pawns
     [SerializeField] private BoardPawn _player;
     [SerializeField] private BoardPawn _player2;
 
@@ -41,7 +36,7 @@ public class BoardManager : MonoBehaviour
 
     private void Initialize()
     {
-        _squarePositions = new List<Vector3>(); // Initialize the list
+        _squarePositions = new List<Vector3>();
         _squareControllers = new List<SquareController>();
 
         foreach (Transform _squareTransform in _squareTransforms)
@@ -56,12 +51,12 @@ public class BoardManager : MonoBehaviour
             _squareControllers.Add(squareController);
         }
 
-        _pawns.Capacity = _squarePositions.Count;
+        _pawns = new List<List<BoardPawn>>(_squarePositions.Count);
 
-        // Fill the _pawns list with null elements
-        for (int i = 0; i < _pawns.Capacity; i++)
+        // Fill the _pawns list with empty sublists
+        for (int i = 0; i < _squarePositions.Count; i++)
         {
-            _pawns.Add(null);
+            _pawns.Add(new List<BoardPawn>());
         }
 
         if (_player == null)
@@ -71,8 +66,8 @@ public class BoardManager : MonoBehaviour
         }
 
         AddToBoard(_player, _playerIndex);
+        AddToBoard(_player2, _playerIndex);
     }
-
 
     private List<Vector3> GetPath(int start, int end)
     {
@@ -84,70 +79,26 @@ public class BoardManager : MonoBehaviour
 
         List<Vector3> tempList = new List<Vector3>();
 
-
         if (start < end)
         {
-            for (int i = start; i < end + 1; i++)
+            for (int i = start; i <= end; i++)
             {
                 tempList.Add(_squarePositions[i]);
             }
         }
         else if (start > end)
         {
-            for (int i = start; i > end - 1; i--)
+            for (int i = start; i >= end; i--)
             {
                 tempList.Add(_squarePositions[i]);
             }
         }
-        else if(start == end)
+        else
         {
             return null;
         }
 
         return tempList;
-    }
-
-
-
-
-    public void SetPosition(int pawnIndex, int newPosition)
-    {
-        if (pawnIndex < 0 || pawnIndex >= _pawns.Count || newPosition < 0 || newPosition >= _squarePositions.Count)
-        {
-            Debug.LogError("Invalid pawn index or new position!");
-            return;
-        }
-
-        if (pawnIndex == _playerIndex)
-        {
-            _playerIndex = newPosition;
-        }
-
-        if (pawnIndex == newPosition)
-        {
-            return;
-        }
-
-
-        BoardPawn pawnRef = _pawns[pawnIndex];
-
-        List<Vector3> path = GetPath(pawnIndex, newPosition);
-
-        
-
-        if (path == null)
-        {
-            return;
-        }
-
-
-        pawnRef.SetMove(path, _squareControllers[newPosition]);
-
-        _pawns[newPosition] = pawnRef;
-
-        _pawns[pawnIndex] = null;
-
-        _currentState = BoardState.Moving;
     }
 
     public void SetPosition(BoardPawn pawn, int newPosition)
@@ -158,32 +109,28 @@ public class BoardManager : MonoBehaviour
             return;
         }
 
-        List<Vector3> path = GetPath(_pawns.IndexOf(pawn), newPosition);
+        int oldPosition = GetPositionOnBoardActual(pawn);
+        if (oldPosition == -1)
+        {
+            Debug.LogError("Pawn not found on the board!");
+            return;
+        }
 
+        List<Vector3> path = GetPath(oldPosition, newPosition);
         if (path == null)
         {
             return;
         }
 
-        if (pawn == null)
-        {
-            Debug.LogError("Pawn is null!");
-            return;
-        }
-
         pawn.SetMove(path, _squareControllers[newPosition]);
 
-        BoardPawn pawnRef = pawn;
-
-        _pawns[_pawns.IndexOf(pawn)] = null;
-
-        _pawns[newPosition] = pawnRef;
+        _pawns[oldPosition].Remove(pawn);
+        _pawns[newPosition].Add(pawn);
 
         _currentState = BoardState.Moving;
     }
 
-
-    public void AddToBoard(BoardPawn pawn, int positionIndex) // Changed GameObject to BoardPawn
+    public void AddToBoard(BoardPawn pawn, int positionIndex)
     {
         if (positionIndex < 0 || positionIndex >= _pawns.Count)
         {
@@ -191,85 +138,46 @@ public class BoardManager : MonoBehaviour
             return;
         }
 
-        if (_pawns[positionIndex] != null)
-        {
-            Debug.LogError("Position is already occupied!");
-            return;
-        }
-
-        _pawns[positionIndex] = pawn;
+        _pawns[positionIndex].Add(pawn);
         pawn.transform.position = _squarePositions[positionIndex];
-
-        //pawn.Initialize(this);
     }
 
     public void RemoveFromBoard(BoardPawn pawn)
     {
-        if (!_pawns.Contains(pawn))
-        {
-            Debug.LogError("Pawn not found on the board!");
-            return;
-        }
-
-        Destroy(pawn.gameObject); // Changed gameobject to gameObject
-        _pawns.Remove(pawn);
-    }
-
-    public void RemoveFromBoard(int index)
-    {
-        if (index < 0 || index >= _pawns.Count)
-        {
-            Debug.LogError("Invalid index!");
-            return;
-        }
-
-        Destroy(_pawns[index].gameObject); // Changed pawn.transform.gameobject to _pawns[index].gameObject
-        _pawns.RemoveAt(index);
-    }
-
-    public int GetPositionOnBoardReadable(BoardPawn pawn)
-    {
-        int index = _pawns.IndexOf(pawn);
+        int index = GetPositionOnBoardActual(pawn);
         if (index == -1)
         {
             Debug.LogError("Pawn not found on the board!");
-            return -1;
+            return;
         }
 
-        return index + 1;
+        Destroy(pawn.gameObject);
+        _pawns[index].Remove(pawn);
     }
+
     public int GetPositionOnBoardActual(BoardPawn pawn)
     {
-        int index = _pawns.IndexOf(pawn);
-        if (index == -1)
+        for (int i = 0; i < _pawns.Count; i++)
         {
-            Debug.LogError("Pawn not found on the board!");
-            return -1;
+            if (_pawns[i].Contains(pawn))
+            {
+                return i;
+            }
         }
-
-        return index;
+        return -1;
     }
 
-    public int GetDistance(BoardPawn _startPawn, BoardPawn _targetPawn)
+    public int GetDistance(BoardPawn startPawn, BoardPawn targetPawn)
     {
-        // Get the positions of the start and target pawns on the board
-        int startPos = GetPositionOnBoardActual(_startPawn);
-        int targetPos = GetPositionOnBoardActual(_targetPawn);
+        int startPos = GetPositionOnBoardActual(startPawn);
+        int targetPos = GetPositionOnBoardActual(targetPawn);
 
-        // Check if the pawns are on the board
         if (startPos == -1 || targetPos == -1)
         {
             Debug.LogError("One or both pawns are not found on the board!");
             return -1;
         }
 
-        // Calculate and return the distance
         return Mathf.Abs(startPos - targetPos);
-    }
-
-
-    private void Start()
-    {
-
     }
 }

@@ -28,7 +28,7 @@ public class SquareController : MonoBehaviour
     // Executes when a pawn lands on the square
     public void OnLand(BoardPawn _pawn)
     {
-        Debug.Log("Land");
+        Debug.Log("Land" + _pawn.id.ToString());
     }
 
     // Executes when a pawn remains on the square

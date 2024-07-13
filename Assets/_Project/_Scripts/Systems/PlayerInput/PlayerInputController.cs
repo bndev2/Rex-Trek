@@ -5,6 +5,8 @@ using UnityEngine.Rendering;
 
 public class PlayerInputController : MonoBehaviour
 {
+    [SerializeField] private bool _isPlayer1 = false;
+
     [SerializeField] BoardManager _boardManager;
     [SerializeField] Menus_Manager _menuManager;
     [SerializeField] BoardPawn _playerPawn;
@@ -42,10 +44,10 @@ public class PlayerInputController : MonoBehaviour
         switch (_currentState)
         {
             case InputState.Choosing:
-                _menuManager.ExposeInput();
+                _menuManager.ExposeInput(_isPlayer1);
                 break;
             case InputState.Disabled:
-                _menuManager.HideInput();
+                _menuManager.HideInput(_isPlayer1);
                 break;
         }
     }

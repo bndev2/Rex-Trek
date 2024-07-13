@@ -21,7 +21,11 @@ public class TurnManager : MonoBehaviour
 
     [SerializeField] BoardManager _boardManager;
     [SerializeField] Menus_Manager _menusManager;
+
+    [SerializeField] CameraController _cameraController;
+
     [SerializeField] PlayerInputController _playerInputController;
+    [SerializeField] PlayerInputController _player2InputController;
 
     [SerializeField] List<BoardPawn> _pawns;
 
@@ -153,11 +157,19 @@ public class TurnManager : MonoBehaviour
 
         _currentPawn = _pawnTurnOrder.Peek();
 
-        if (_currentPawn.id == "Player")
+        _cameraController.SwitchTarget(_currentPawn.transform);
+
+        if (_currentPawn.id == "Player 1")
         {
             _audioSource.PlayOneShot(_audioPlayerTurnStart);
             _menusManager.ChangeTurnMenu(MenuType.PlayerTurn);
             _playerInputController.ChangeState(PlayerInputController.InputState.Choosing);
+        }
+        else if(_currentPawn.id == "Player 2")
+        {
+            _audioSource.PlayOneShot(_audioPlayerTurnStart);
+            _menusManager.ChangeTurnMenu(MenuType.Player2Turn);
+            _player2InputController.ChangeState(PlayerInputController.InputState.Choosing);
         }
         else
         {
