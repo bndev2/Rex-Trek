@@ -11,6 +11,7 @@ public enum BoardState
 
 public class BoardManager : MonoBehaviour
 {
+
     [SerializeField] private List<Transform> _squareTransforms;
     private List<Vector3> _squarePositions;
     private List<SquareController> _squareControllers;
@@ -69,7 +70,7 @@ public class BoardManager : MonoBehaviour
         AddToBoard(_player2, _playerIndex);
     }
 
-    private List<Vector3> GetPath(int start, int end)
+    public List<Vector3> GetPath(int start, int end)
     {
         if (start < 0 || end >= _squarePositions.Count)
         {
@@ -100,6 +101,46 @@ public class BoardManager : MonoBehaviour
 
         return tempList;
     }
+
+    public List<Vector3> GetPath(BoardPawn origin, BoardPawn end)
+    {
+        int startIndex = GetPositionOnBoardActual(origin);
+        int endIndex = GetPositionOnBoardActual(end);
+
+        return GetPath(startIndex, endIndex);
+    }
+
+    public BoardPawn GetClosest(BoardPawn pawn)
+    {
+        int pawnPosition = GetPositionOnBoardActual(pawn);
+        if (pawnPosition == -1)
+        {
+            Debug.LogError("Pawn not found on the board!");
+            return null;
+        }
+
+        BoardPawn closestPawn = null;
+        int closestDistance = int.MaxValue;
+
+        for (int i = 0; i < _pawns.Count; i++)
+        {
+            for (int j = 0; j < _pawns[i].Count; j++)
+            {
+                BoardPawn otherPawn = _pawns[i][j];
+                if (otherPawn == pawn) continue; // Skip the pawn itself
+
+                int distance = Mathf.Abs(i - pawnPosition);
+                if (distance < closestDistance)
+                {
+                    closestDistance = distance;
+                    closestPawn = otherPawn;
+                }
+            }
+        }
+
+        return closestPawn;
+    }
+
 
     public void SetPosition(BoardPawn pawn, int newPosition)
     {
@@ -180,4 +221,56 @@ public class BoardManager : MonoBehaviour
 
         return Mathf.Abs(startPos - targetPos);
     }
+
+    public SquareController GetSquare(int index)
+    {
+        return _squareControllers[index];
+    }
+
+
+    public SquareController GetSquare(Vector3 position)
+    {
+        for(int i = 0; i < _squareTransforms.Count; i++)
+        {
+            if (_squareTransforms[i].position.Equals(position))
+            {
+                return _squareControllers[i];
+            }
+        }
+
+        return null;
+    }
+
+    public List<BoardPawn> GetPawns(SquareController square)
+    {
+        int index = _squareControllers.IndexOf(square);
+
+        List<BoardPawn> tempList = new List<BoardPawn>();
+
+        for (int i = 0; i < _pawns[index].Count; ++i)
+        {
+            tempList.Add(_pawns[index][i]);
+        }
+
+        return tempList;
+    }
+
+    public List<PlayerController> GetPlayers(SquareController square)
+    {
+        List<BoardPawn> pawns = GetPawns(square);
+
+        List<PlayerController> playersTemp = new List<PlayerController>();
+
+        foreach (BoardPawn p in pawns)
+        {
+            PlayerController player = p as PlayerController;
+            if (player != null)
+            {
+                playersTemp.Add(player);
+            }
+        }
+
+        return playersTemp;
+    }
+
 }

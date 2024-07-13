@@ -11,7 +11,7 @@ public class EntityStats : MonoBehaviour
         get { return _maxHealth; }
     }
     [SerializeField] private float _startingHealth;
-    public float _currentHealth;
+    private float _currentHealth;
     public float currentHealth
     {
         get { return _currentHealth; }

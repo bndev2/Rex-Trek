@@ -26,9 +26,19 @@ public class TurnManager : MonoBehaviour
 
     [SerializeField] PlayerInputController _playerInputController;
     [SerializeField] PlayerInputController _player2InputController;
+    [SerializeField] AiInputController _aiInputController;
 
+    // The starting pawns
     [SerializeField] List<BoardPawn> _pawns;
 
+    [SerializeField] private int _totalTurns = 0;
+    public int totalTurns
+    {
+        get
+        {
+            return _totalTurns;
+        }
+    }
 
     // Dictionary to hold the number of turns each pawn gets during their next turn.
     private Dictionary<BoardPawn, int> _pawnTurns = new Dictionary<BoardPawn, int>();
@@ -54,7 +64,7 @@ public class TurnManager : MonoBehaviour
         {
             _pawnTurnOrder.Enqueue(pawn);
 
-            pawn.Initialize(this);
+            pawn.Initialize(this, _boardManager);
         }
 
         // Add the pawns to the _pawnTurns dict with initial turns set to 1
@@ -131,6 +141,8 @@ public class TurnManager : MonoBehaviour
 
         _pawnTurns[_currentPawn] -= 1;
 
+        _totalTurns += 1;
+
         // If their turns are out switch to the next pawn
         if (_pawnTurns[_currentPawn] <= 0)
         {
@@ -163,20 +175,33 @@ public class TurnManager : MonoBehaviour
         {
             _audioSource.PlayOneShot(_audioPlayerTurnStart);
             _menusManager.ChangeTurnMenu(MenuType.PlayerTurn);
-            _playerInputController.ChangeState(PlayerInputController.InputState.Choosing);
+            _playerInputController.ChangeState(InputState.Choosing);
         }
         else if(_currentPawn.id == "Player 2")
         {
             _audioSource.PlayOneShot(_audioPlayerTurnStart);
             _menusManager.ChangeTurnMenu(MenuType.Player2Turn);
-            _player2InputController.ChangeState(PlayerInputController.InputState.Choosing);
+            _player2InputController.ChangeState(InputState.Choosing);
         }
-        else
+        else if(_currentPawn.id == "Enemy")
         {
             _audioSource.PlayOneShot(_audioEnemyTurnStart);
             _menusManager.ChangeTurnMenu(MenuType.EnemyTurn);
+            _aiInputController.ChangeState(InputState.Choosing);
         }
     }
 
+    public void AddPawn(BoardPawn pawn)
+    {
+        // Add the pawn into the turns que and dictionary.
+        _pawnTurnOrder.Enqueue(pawn);
+        _pawnTurns[pawn] = 1;
+        _pawns.Add(pawn);
+
+        pawn.Initialize(this, _boardManager);
+
+        // Add them to the physical board
+        _boardManager.AddToBoard(pawn, 0);
+    }
 
 }

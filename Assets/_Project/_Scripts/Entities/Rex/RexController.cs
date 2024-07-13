@@ -1,18 +1,11 @@
-using MyAssets;
 using System.Collections;
 using System.Collections.Generic;
-using System.Security.Cryptography;
 using UnityEngine;
-using UnityEngine.Rendering;
 
-public class PlayerController : BoardPawn
+public class RexController : BoardPawn
 {
-    [SerializeField] AudioClip _sfxDamage;
-
-    [SerializeField] private Animator _animator;
-    [SerializeField] private EntityStats _entityStats;
-
-    [SerializeField] private Menus_Manager _menusManager;
+    //[SerializeField] private Animator _animator;
+    [SerializeField] private float _damageAmount = 10;
 
 
     public override void SetMove(List<Vector3> path, SquareController squareController)
@@ -49,8 +42,17 @@ public class PlayerController : BoardPawn
                 // when point is reached approximately set the position to the point and start moving to next
                 if (Vector3.Distance(transform.position, _path[_currentMoveIndex]) < 0.01f)
                 {
+                    
                     transform.position = _path[_currentMoveIndex];
+
+                    // call the on pass on the square if you're passing and it isn't the last
+                    SquareController _passingSquare = _boardManager.GetSquare(_path[_currentMoveIndex]);
+                    _passingSquare.OnPass(this);
+                    HandleDamagingPlayers(_passingSquare);
+                    
+
                     _currentMoveIndex += 1;
+
                     if (_currentMoveIndex >= _path.Count) // Check if we've reached the end of the path
                     {
                         _onMoveEnd.Invoke();
@@ -83,10 +85,10 @@ public class PlayerController : BoardPawn
         switch (pawnState)
         {
             case PawnState.Idle:
-                _animator.Play("Idle");
+                //_animator.Play("Idle");
                 break;
             case PawnState.Moving:
-                _animator.Play("Walk");
+                //_animator.Play("Walk");
                 break;
             case PawnState.Disabled:
                 break;
@@ -98,42 +100,19 @@ public class PlayerController : BoardPawn
         base.FinishTurn();
     }
 
-    public void DoDamage(float damageAmount)
+    private void HandleDamagingPlayers(SquareController square)
     {
-        float currentHealth = _entityStats.currentHealth;
+        List<PlayerController> players = _boardManager.GetPlayers(square);
 
-        _entityStats.SetCurrentHealth(Mathf.Clamp(currentHealth - damageAmount, 0, _entityStats.maxHealth));
-
-        SoundFXManager.instance.PlaySoundAtTransform(_sfxDamage, transform);
-
-        UpdateUI();
-    }
-
-    private void UpdateUI()
-    {
-        if (_menusManager != null)
+        if(players != null)
         {
-            if (id == "Player 1")
+            foreach (PlayerController player in players)
             {
-                _menusManager.UpdateHealthUI(_entityStats.currentScaledHealth, true);
-            }
-            else if (id == "Player 2")
-            {
-                _menusManager.UpdateHealthUI(_entityStats.currentScaledHealth, false);
+                player.DoDamage(_damageAmount);
             }
         }
     }
 
-    private void Initialize()
-    {
-        UpdateUI();
-    }
-
-    private void Start()
-    {
-        Initialize();
-
-    }
 
     private void Update()
     {

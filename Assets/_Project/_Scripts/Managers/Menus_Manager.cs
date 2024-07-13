@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEditor.Build;
 using UnityEngine;
+using UnityEngine.UI;
 
 public enum MenuType
 {
@@ -23,6 +24,9 @@ public class Menus_Manager : MonoBehaviour
 
     [SerializeField] GameObject _buttonRollDicePlayer1;
     [SerializeField] GameObject _buttonRollDicePlayer2;
+
+    [SerializeField] Slider _sliderPlayer1Health;
+    [SerializeField] Slider _sliderPlayer2Health;
 
     [SerializeField] UINotification _turnTransitionNotification;
 
@@ -90,6 +94,18 @@ public class Menus_Manager : MonoBehaviour
     public void PlayNotification(string message)
     {
         _turnTransitionNotification.Play(message);
+    }
+
+    public void UpdateHealthUI(float newScaledHealth, bool isPlayer1)
+    {
+        if(isPlayer1)
+        {
+            _sliderPlayer1Health.value = newScaledHealth;
+        }
+        else if(!isPlayer1)
+        {
+            _sliderPlayer2Health.value = newScaledHealth;
+        }
     }
 
     private void Awake()

@@ -11,12 +11,6 @@ public class PlayerInputController : MonoBehaviour
     [SerializeField] Menus_Manager _menuManager;
     [SerializeField] BoardPawn _playerPawn;
 
-    public enum InputState
-    {
-        Choosing,
-        Disabled,
-    }
-
     private InputState _currentState = InputState.Choosing;
 
     public void RollDice()

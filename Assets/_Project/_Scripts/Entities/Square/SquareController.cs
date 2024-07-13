@@ -45,6 +45,6 @@ public class SquareController : MonoBehaviour
 
     public void OnPass(BoardPawn _pawn)
     {
-
+        Debug.Log("Pass" + _pawn.id.ToString());
     }
 }

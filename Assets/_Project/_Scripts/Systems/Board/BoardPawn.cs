@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Net.NetworkInformation;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -26,10 +27,13 @@ public class BoardPawn : MonoBehaviour
     [SerializeField] protected UnityEvent _onMoveEnd;
 
     [SerializeField] protected PawnState _currentState = PawnState.Idle;
-    protected TurnManager _manager;
+    protected TurnManager _turnManager;
+    protected BoardManager _boardManager;
+
     protected SquareController _squareController;
 
     protected List<Vector3> _path;
+
     protected int _currentMoveIndex = 0;
 
     public void ApplyElement(Element element)
@@ -37,13 +41,13 @@ public class BoardPawn : MonoBehaviour
         switch (element.elementEffect)
         {
             case ElementEffect.AddTurns:
-                _manager.IncreaseTurns(this, (int)element.modifier);
+                _turnManager.IncreaseTurns(this, (int)element.modifier);
                 break;
             case ElementEffect.RemoveTurns:
-                _manager.IncreaseTurns(this, (int)-element.modifier);
+                _turnManager.IncreaseTurns(this, (int)-element.modifier);
                 break;
             case ElementEffect.MoveForward:
-                _manager.MoveAdditiveOverride(this, (int)element.modifier);
+                _turnManager.MoveAdditiveOverride(this, (int)element.modifier);
                 break;
             case ElementEffect.MoveBack:
                 break;
@@ -61,16 +65,39 @@ public class BoardPawn : MonoBehaviour
         _squareController = squareController;
     }
 
+    public void NewSetMovement(int diceRollAmount)
+    {
+
+        // enemy behavior
+        //int closest = _boardManager.GetClosest(this);
+        //int origin = _boardManager.GetPositionOnBoardActual(this);
+
+        // means behind
+        //if(origin - closest > 0)
+        {//
+            //int distanceToTravel = Mathf.Clamp(origin - closest, -(origin - closest), 0);
+            //_boardManager.GetPath(this, _boardManager.get)
+        }
+        // means ahead
+        //else if (origin - closest < 0)
+        //{
+
+        //}
+
+    }
+
     public virtual void FinishTurn()
     {
-        _manager.OnFinishMove(this);
+
+        _turnManager.OnFinishMove(this);
 
         _squareController.OnLand(this);
     }
 
-    public void Initialize(TurnManager manager)
+    public void Initialize(TurnManager manager, BoardManager boardManager)
     {
-        _manager = manager;
+        _turnManager = manager;
+        _boardManager = boardManager;
     }
 
     public void ClearPath()
