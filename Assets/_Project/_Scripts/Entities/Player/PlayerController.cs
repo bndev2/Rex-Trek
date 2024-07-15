@@ -15,7 +15,7 @@ public class PlayerController : BoardPawn
     [SerializeField] private Menus_Manager _menusManager;
 
 
-    public override void SetMove(List<Vector3> path, SquareController squareController)
+    public override bool SetMove(List<Vector3> path, SquareController squareController)
     {
         base.SetMove(path, squareController);
 
@@ -25,6 +25,8 @@ public class PlayerController : BoardPawn
         ChangeState(PawnState.Moving);
         _currentMoveIndex = 0; // Reset the move index when a new path is set
         _onMoveStart.Invoke();
+
+        return true;
     }
 
     // Handle moving along the vector3 points
@@ -93,6 +95,7 @@ public class PlayerController : BoardPawn
         }
     }
 
+
     public override void FinishTurn()
     {
         base.FinishTurn();
@@ -103,6 +106,17 @@ public class PlayerController : BoardPawn
         float currentHealth = _entityStats.currentHealth;
 
         _entityStats.SetCurrentHealth(Mathf.Clamp(currentHealth - damageAmount, 0, _entityStats.maxHealth));
+
+        SoundFXManager.instance.PlaySoundAtTransform(_sfxDamage, transform);
+
+        UpdateUI();
+    }
+
+    public void GiveHealth(float healthToGive)
+    {
+        float currentHealth = _entityStats.currentHealth;
+
+        _entityStats.SetCurrentHealth(Mathf.Clamp(currentHealth + healthToGive, 0, _entityStats.maxHealth));
 
         SoundFXManager.instance.PlaySoundAtTransform(_sfxDamage, transform);
 
@@ -132,7 +146,6 @@ public class PlayerController : BoardPawn
     private void Start()
     {
         Initialize();
-
     }
 
     private void Update()

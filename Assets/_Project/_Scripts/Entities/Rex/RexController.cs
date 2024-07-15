@@ -1,102 +1,57 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+
+public enum RexMentalState
+{
+    PursuingPlayer,
+    Preoccupied,
+}
 
 public class RexController : BoardPawn
 {
-    //[SerializeField] private Animator _animator;
     [SerializeField] private float _damageAmount = 10;
 
+    private bool _hasMovedThisTurn = false;
+    private RexMentalState _currentMentalState = RexMentalState.PursuingPlayer;
 
-    public override void SetMove(List<Vector3> path, SquareController squareController)
+    public override bool SetMove(List<Vector3> path, SquareController squareController)
     {
+        _currentMoveIndex = 0;
+
+        if (_currentMentalState == RexMentalState.PursuingPlayer && !_hasMovedThisTurn)
+        {
+            MoveTowardsClosestPlayer(path);
+            return false;
+        }
+
+        StartMoving(path, squareController);
+        return true;
+    }
+
+    private void MoveTowardsClosestPlayer(List<Vector3> path)
+    {
+        PlayerController closestPlayer = _boardManager.GetClosestPlayer(this);
+        int closestPlayerDirection = (int)Mathf.Sign(_boardManager.GetPositionOnBoardActual(closestPlayer) - _boardManager.GetPositionOnBoardActual(this));
+        int closestPlayerDistance = _boardManager.GetDistance(this, closestPlayer);
+        int spacesToMove = closestPlayerDirection * Mathf.Min(path.Count - 1, closestPlayerDistance);
+
+        _hasMovedThisTurn = true;
+        _boardManager.SetPosition(this, _boardManager.GetPositionOnBoardActual(this) + spacesToMove);
+    }
+
+    private void StartMoving(List<Vector3> path, SquareController squareController)
+    {
+        _currentMoveIndex = 0;
         base.SetMove(path, squareController);
-
-        _path = new List<Vector3>();
-
         _path = path;
-        ChangeState(PawnState.Moving);
-        _currentMoveIndex = 0; // Reset the move index when a new path is set
-        _onMoveStart.Invoke();
-    }
-
-    // Handle moving along the vector3 points
-    private void HandleMove()
-    {
-        if (_currentState == PawnState.Moving)
-        {
-            // Check if _currentMoveIndex is within the bounds of the _path list
-            if (_currentMoveIndex < _path.Count)
-            {
-                // Move towards the point 
-                transform.position = Vector3.MoveTowards(transform.position, _path[_currentMoveIndex], _moveSpeed * Time.deltaTime);
-
-                // Rotate the player to face the next point
-                Vector3 direction = _path[_currentMoveIndex] - transform.position;
-                if (direction != Vector3.zero) // Avoid LookRotation creating errors when direction is zero
-                {
-                    Quaternion toRotation = Quaternion.LookRotation(direction, Vector3.up);
-                    transform.rotation = Quaternion.Lerp(transform.rotation, toRotation, _moveSpeed * Time.deltaTime);
-                }
-
-                // when point is reached approximately set the position to the point and start moving to next
-                if (Vector3.Distance(transform.position, _path[_currentMoveIndex]) < 0.01f)
-                {
-                    
-                    transform.position = _path[_currentMoveIndex];
-
-                    // call the on pass on the square if you're passing and it isn't the last
-                    SquareController _passingSquare = _boardManager.GetSquare(_path[_currentMoveIndex]);
-                    _passingSquare.OnPass(this);
-                    HandleDamagingPlayers(_passingSquare);
-                    
-
-                    _currentMoveIndex += 1;
-
-                    if (_currentMoveIndex >= _path.Count) // Check if we've reached the end of the path
-                    {
-                        _onMoveEnd.Invoke();
-                        transform.position = _path[_path.Count - 1];
-                        ChangeState(PawnState.Idle);
-                        _path.Clear();
-                        FinishTurn();
-                    }
-                }
-            }
-        }
-    }
-
-
-
-    private void ChangeState(PawnState pawnState)
-    {
-        switch (pawnState)
-        {
-            case PawnState.Idle:
-                break;
-            case PawnState.Moving:
-                break;
-            case PawnState.Disabled:
-                break;
-        }
-
-        _currentState = pawnState;
-
-        switch (pawnState)
-        {
-            case PawnState.Idle:
-                //_animator.Play("Idle");
-                break;
-            case PawnState.Moving:
-                //_animator.Play("Walk");
-                break;
-            case PawnState.Disabled:
-                break;
-        }
+        _currentState = PawnState.Moving;
     }
 
     public override void FinishTurn()
     {
+        _hasMovedThisTurn = false;
         base.FinishTurn();
     }
 
@@ -104,7 +59,7 @@ public class RexController : BoardPawn
     {
         List<PlayerController> players = _boardManager.GetPlayers(square);
 
-        if(players != null)
+        if (players != null)
         {
             foreach (PlayerController player in players)
             {
@@ -113,9 +68,57 @@ public class RexController : BoardPawn
         }
     }
 
-
     private void Update()
     {
         HandleMove();
+    }
+
+    private void HandleMove()
+    {
+        if (_currentState == PawnState.Moving && _currentMoveIndex < _path.Count)
+        {
+            MoveToNextPositionInPath();
+
+            if (_currentMoveIndex >= _path.Count)
+            {
+                FinishMove();
+            }
+        }
+    }
+
+    private void MoveToNextPositionInPath()
+    {
+        Vector3 position = _path[_currentMoveIndex];
+        transform.position = Vector3.MoveTowards(transform.position, position, _moveSpeed * Time.deltaTime);
+
+        Vector3 direction = position - transform.position;
+        if (direction != Vector3.zero)
+        {
+            Quaternion toRotation = Quaternion.LookRotation(direction, Vector3.up);
+            transform.rotation = Quaternion.Lerp(transform.rotation, toRotation, _moveSpeed * Time.deltaTime);
+        }
+
+        if (Vector3.Distance(transform.position, position) < 0.01f)
+        {
+            transform.position = position;
+            SquareController passingSquare = _boardManager.GetSquare(position);
+            passingSquare.OnPass(this);
+            HandleDamagingPlayers(passingSquare);
+            _currentMoveIndex += 1;
+        }
+    }
+
+    private void FinishMove()
+    {
+        _onMoveEnd.Invoke();
+        transform.position = _path[_path.Count - 1];
+        ChangeState(PawnState.Idle);
+        _path.Clear();
+        FinishTurn();
+    }
+
+    private void ChangeState(PawnState pawnState)
+    {
+        _currentState = pawnState;
     }
 }

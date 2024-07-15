@@ -22,6 +22,14 @@ public class BoardPawn : MonoBehaviour
         }
     }
 
+    public int positionIndex
+    {
+        get
+        {
+            return _boardManager.GetPositionOnBoardActual(this);
+        }
+    }
+
     [SerializeField] protected float _moveSpeed = 5;
     [SerializeField] protected UnityEvent _onMoveStart;
     [SerializeField] protected UnityEvent _onMoveEnd;
@@ -36,25 +44,25 @@ public class BoardPawn : MonoBehaviour
 
     protected int _currentMoveIndex = 0;
 
-    public void ApplyElement(Element element)
-    {
-        switch (element.elementEffect)
-        {
-            case ElementEffect.AddTurns:
-                _turnManager.IncreaseTurns(this, (int)element.modifier);
-                break;
-            case ElementEffect.RemoveTurns:
-                _turnManager.IncreaseTurns(this, (int)-element.modifier);
-                break;
-            case ElementEffect.MoveForward:
-                _turnManager.MoveAdditiveOverride(this, (int)element.modifier);
-                break;
-            case ElementEffect.MoveBack:
-                break;
-        }
-    }
-
-    public virtual void SetMove(List<Vector3> path, SquareController squareController)
+    //public void ApplyElement(Element element)
+    //{
+        //switch (element.elementEffect)
+        //{
+            //case ElementEffect.AddTurns:
+                //_turnManager.IncreaseTurns(this, (int)element.modifier);
+                //break;
+            //case ElementEffect.RemoveTurns:
+                //_turnManager.IncreaseTurns(this, (int)-element.modifier);
+                //break;
+            //case ElementEffect.MoveForward:
+                //_turnManager.MoveAdditiveOverride(this, (int)element.modifier);
+                //break;
+            //case ElementEffect.MoveBack:
+                //break;
+        //}
+    //}
+    // Behavior depends on board manager
+    public virtual bool SetMove(List<Vector3> path, SquareController squareController)
     {
 
         if (_squareController != null)
@@ -63,27 +71,8 @@ public class BoardPawn : MonoBehaviour
         }
 
         _squareController = squareController;
-    }
 
-    public void NewSetMovement(int diceRollAmount)
-    {
-
-        // enemy behavior
-        //int closest = _boardManager.GetClosest(this);
-        //int origin = _boardManager.GetPositionOnBoardActual(this);
-
-        // means behind
-        //if(origin - closest > 0)
-        {//
-            //int distanceToTravel = Mathf.Clamp(origin - closest, -(origin - closest), 0);
-            //_boardManager.GetPath(this, _boardManager.get)
-        }
-        // means ahead
-        //else if (origin - closest < 0)
-        //{
-
-        //}
-
+        return true;
     }
 
     public virtual void FinishTurn()

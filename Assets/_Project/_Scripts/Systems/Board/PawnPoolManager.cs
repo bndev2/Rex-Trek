@@ -15,7 +15,7 @@ public class PawnPoolManager : MonoBehaviour
 
     private void Start()
     {
-        AddToPool(_startingPawns[0], 2);
+        AddToPool(_startingPawns[0], 3);
     }
 
     public void UpdateAdding()
