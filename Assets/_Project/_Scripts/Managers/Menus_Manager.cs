@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEditor.Build;
 using UnityEngine;
 using UnityEngine.UI;
@@ -27,6 +28,9 @@ public class Menus_Manager : MonoBehaviour
 
     [SerializeField] Slider _sliderPlayer1Health;
     [SerializeField] Slider _sliderPlayer2Health;
+
+    [SerializeField] TextMeshProUGUI _textPlayer1Turns;
+    [SerializeField] TextMeshProUGUI _textPlayer2Turns;
 
     [SerializeField] UINotification _turnTransitionNotification;
 
@@ -105,6 +109,18 @@ public class Menus_Manager : MonoBehaviour
         else if(!isPlayer1)
         {
             _sliderPlayer2Health.value = newScaledHealth;
+        }
+    }
+
+    public void UpdatePlayerTurnsUI(int newTurns, bool isPlayer1)
+    {
+        if (isPlayer1)
+        {
+            _textPlayer1Turns.text = "Turns: " + newTurns.ToString();
+        }
+        else if (!isPlayer1)
+        {
+            _textPlayer2Turns.text = "Turns: " + newTurns.ToString();
         }
     }
 

@@ -78,8 +78,24 @@ public class TurnManager : MonoBehaviour
         {
             _currentPawn = _pawnTurnOrder.Peek();
         }
+
     }
 
+    public void PauseCurrentTurn()
+    {
+        // Stop the pawns movement
+        _currentPawn.PauseMove();
+
+        // disable ui input
+    }
+
+    public void ResumeCurrentTurn()
+    {
+        // Stop the pawns movement
+        _currentPawn.ResumeMove();
+
+        // Enable ui input
+    }
 
     public void MoveAdditiveCurrent(int amountToMove)
     {
@@ -134,14 +150,37 @@ public class TurnManager : MonoBehaviour
          _pawnTurns[pawn] += turnsToAdd;
 
         _pawnTurns[pawn] = Mathf.Clamp(_pawnTurns[pawn], 1, int.MaxValue);
+
+        UpdateTurnsUI(pawn);
     }
 
+    private void UpdateTurnsUI(BoardPawn pawn)
+    {
+        if (pawn.id == "Player 1")
+        {
+            if (pawn == _currentPawn)
+            {
+                _playerInputController.ChangeState(InputState.Choosing);
+            }
+            _menusManager.UpdatePlayerTurnsUI(_pawnTurns[pawn], true);
+        }
+        else if (pawn.id == "Player 2")
+        {
+            if (pawn == _currentPawn)
+            {
+                _player2InputController.ChangeState(InputState.Choosing);
+            }
+            _menusManager.UpdatePlayerTurnsUI(_pawnTurns[pawn], false);
+        }
+    }
     public void OnFinishMove(BoardPawn pawn)
     {
 
         _pawnTurns[_currentPawn] -= 1;
 
         _totalTurns += 1;
+
+        UpdateTurnsUI(pawn);
 
         // If their turns are out switch to the next pawn
         if (_pawnTurns[_currentPawn] <= 0)
@@ -153,12 +192,33 @@ public class TurnManager : MonoBehaviour
 
             SwitchToNextTurn();
         }
+        else if (_currentPawn.id == "Player 1")
+        {
+            _playerInputController.ChangeState(InputState.Choosing);
+        }
+        else if(_currentPawn.id == "Player 2")
+        {
+            _player2InputController.ChangeState(InputState.Choosing);
+        }
+        else if (_currentPawn.id == "Enemy")
+        {
+            _aiInputController.ChangeState(InputState.Choosing);
+        }
     }
 
     // Reset turns back to 1
     public void ResetTurns(BoardPawn pawn)
     {
         _pawnTurns[pawn] = 1;
+
+        if (_currentPawn.id == "Player 1")
+        {
+            _menusManager.UpdatePlayerTurnsUI(_pawnTurns[pawn], true);
+        }
+        else if (_currentPawn.id == "Player 2")
+        {
+            _menusManager.UpdatePlayerTurnsUI(_pawnTurns[pawn], false);
+        }
     }
 
     private void SwitchToNextTurn()

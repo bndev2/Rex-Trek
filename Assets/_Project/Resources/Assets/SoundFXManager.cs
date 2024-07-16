@@ -32,7 +32,7 @@ public class SoundFXManager : MonoBehaviour
         PlaySound(audioClip, spawnTransform, volume, amountToPlay);
     }
 
-    private void PlaySound(AudioClip audioClip, Transform spawnTransform, float volume, float amountToPlay)
+    private void PlaySound(AudioClip audioClip, Transform spawnTransform, float volume = 1, float amountToPlay = 1)
     {
         // Create a new GameObject
         GameObject audioObject = new GameObject("AudioObject");
@@ -53,7 +53,7 @@ public class SoundFXManager : MonoBehaviour
         // Move the GameObject to the spawnTransform position
         audioObject.transform.position = spawnTransform.position;
 
-        if (amountToPlay >= 1)
+        if (amountToPlay > 1)
         {
             audioSource.loop = true;
         }

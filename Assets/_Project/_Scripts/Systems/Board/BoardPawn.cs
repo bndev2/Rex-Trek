@@ -44,24 +44,7 @@ public class BoardPawn : MonoBehaviour
 
     protected int _currentMoveIndex = 0;
 
-    //public void ApplyElement(Element element)
-    //{
-        //switch (element.elementEffect)
-        //{
-            //case ElementEffect.AddTurns:
-                //_turnManager.IncreaseTurns(this, (int)element.modifier);
-                //break;
-            //case ElementEffect.RemoveTurns:
-                //_turnManager.IncreaseTurns(this, (int)-element.modifier);
-                //break;
-            //case ElementEffect.MoveForward:
-                //_turnManager.MoveAdditiveOverride(this, (int)element.modifier);
-                //break;
-            //case ElementEffect.MoveBack:
-                //break;
-        //}
-    //}
-    // Behavior depends on board manager
+    protected Coroutine _waitToFinishRoutine;
     public virtual bool SetMove(List<Vector3> path, SquareController squareController)
     {
 
@@ -75,13 +58,46 @@ public class BoardPawn : MonoBehaviour
         return true;
     }
 
-    public virtual void FinishTurn()
+    public virtual void PauseMove()
     {
 
-        _turnManager.OnFinishMove(this);
-
-        _squareController.OnLand(this);
     }
+
+    public virtual void ResumeMove()
+    {
+
+    }
+
+    public virtual void FinishTurn()
+    {
+        bool isItemPresent = _squareController.OnLand(this);
+
+        // If a coroutine is already running, stop it
+        if (_waitToFinishRoutine != null)
+        {
+            StopCoroutine(_waitToFinishRoutine);
+        }
+
+        if (isItemPresent)
+        {
+            _waitToFinishRoutine = StartCoroutine(WaitToFinish(3));
+        }
+        else
+        {
+            _waitToFinishRoutine = StartCoroutine(WaitToFinish(0));
+        }
+    }
+
+    // Coroutine to delay the finishing of a turn
+    private IEnumerator WaitToFinish(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+
+        _turnManager.OnFinishMove(this);
+        _waitToFinishRoutine = null;
+    }
+
+
 
     public void Initialize(TurnManager manager, BoardManager boardManager)
     {

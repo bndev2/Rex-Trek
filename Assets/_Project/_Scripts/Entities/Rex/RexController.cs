@@ -16,6 +16,8 @@ public class RexController : BoardPawn
     private bool _hasMovedThisTurn = false;
     private RexMentalState _currentMentalState = RexMentalState.PursuingPlayer;
 
+    private bool _isPaused = false;
+
     public override bool SetMove(List<Vector3> path, SquareController squareController)
     {
         _currentMoveIndex = 0;
@@ -75,13 +77,17 @@ public class RexController : BoardPawn
 
     private void HandleMove()
     {
-        if (_currentState == PawnState.Moving && _currentMoveIndex < _path.Count)
-        {
-            MoveToNextPositionInPath();
 
-            if (_currentMoveIndex >= _path.Count)
+        if (!_isPaused)
+        {
+            if (_currentState == PawnState.Moving && _currentMoveIndex < _path.Count)
             {
-                FinishMove();
+                MoveToNextPositionInPath();
+
+                if (_currentMoveIndex >= _path.Count)
+                {
+                    FinishMove();
+                }
             }
         }
     }
@@ -115,6 +121,20 @@ public class RexController : BoardPawn
         ChangeState(PawnState.Idle);
         _path.Clear();
         FinishTurn();
+    }
+
+    public override void PauseMove()
+    {
+        base.PauseMove();
+
+        _isPaused = true;
+    }
+
+    public override void ResumeMove()
+    {
+        base.ResumeMove();
+        // Add a new method to resume the Rex's movement
+        _isPaused = false;
     }
 
     private void ChangeState(PawnState pawnState)

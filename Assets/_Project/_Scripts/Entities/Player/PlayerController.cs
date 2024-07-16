@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Security.Cryptography;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.Rendering;
 
 public class PlayerController : BoardPawn
@@ -13,6 +14,12 @@ public class PlayerController : BoardPawn
     [SerializeField] private EntityStats _entityStats;
 
     [SerializeField] private Menus_Manager _menusManager;
+
+    private bool _isPaused = false;
+
+    [SerializeField] private UnityEvent _onTakeDamage;
+    [SerializeField] private UnityEvent _onTakeTurns;
+    [SerializeField] private UnityEvent _onMoveBack;
 
 
     public override bool SetMove(List<Vector3> path, SquareController squareController)
@@ -25,6 +32,8 @@ public class PlayerController : BoardPawn
         ChangeState(PawnState.Moving);
         _currentMoveIndex = 0; // Reset the move index when a new path is set
         _onMoveStart.Invoke();
+
+        _animator.CrossFade("Walk", 0.05f);
 
         return true;
     }
@@ -73,8 +82,10 @@ public class PlayerController : BoardPawn
         switch (pawnState)
         {
             case PawnState.Idle:
+                _animator.StopPlayback();
                 break;
             case PawnState.Moving:
+                _animator.StopPlayback();
                 break;
             case PawnState.Disabled:
                 break;
@@ -85,16 +96,15 @@ public class PlayerController : BoardPawn
         switch (pawnState)
         {
             case PawnState.Idle:
-                _animator.Play("Idle");
+                _animator.CrossFade("Idle", 0.05f);
                 break;
             case PawnState.Moving:
-                _animator.Play("Walk");
+                _animator.CrossFade("Walk", 0.05f);
                 break;
             case PawnState.Disabled:
                 break;
         }
     }
-
 
     public override void FinishTurn()
     {
@@ -103,6 +113,8 @@ public class PlayerController : BoardPawn
 
     public void DoDamage(float damageAmount)
     {
+        _onTakeDamage.Invoke();
+
         float currentHealth = _entityStats.currentHealth;
 
         _entityStats.SetCurrentHealth(Mathf.Clamp(currentHealth - damageAmount, 0, _entityStats.maxHealth));
@@ -123,6 +135,27 @@ public class PlayerController : BoardPawn
         UpdateUI();
     }
 
+    public void MoveSpaces(int spacesToMove)
+    {
+        Debug.Log("Heres some spaces");
+
+        // If a coroutine is already running, stop it to delay the finishing of the turn
+        if (_waitToFinishRoutine != null)
+        {
+            StopCoroutine(_waitToFinishRoutine);
+            _waitToFinishRoutine = null;
+        }
+
+        _turnManager.MoveAdditiveOverride(this, spacesToMove);
+    }
+
+
+    public void GiveTurns(int turnsToAdd)
+    {
+        Debug.Log("Heres some turns");
+        _turnManager.IncreaseTurns(this, turnsToAdd);
+    }
+
     private void UpdateUI()
     {
         if (_menusManager != null)
@@ -138,6 +171,20 @@ public class PlayerController : BoardPawn
         }
     }
 
+    public override void PauseMove()
+    {
+        base.PauseMove();
+
+        _isPaused = true;
+    }
+
+    public override void ResumeMove()
+    {
+        // Add a new method to resume the Rex's movement
+        _isPaused = false;
+    }
+
+
     private void Initialize()
     {
         UpdateUI();
@@ -151,5 +198,6 @@ public class PlayerController : BoardPawn
     private void Update()
     {
         HandleMove();
+
     }
 }

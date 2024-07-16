@@ -16,6 +16,10 @@ public class BoardManager : MonoBehaviour
     [SerializeField] private List<Transform> _squareTransforms;
     private List<Vector3> _squarePositions;
     private List<SquareController> _squareControllers;
+    public List<SquareController> squareControllers
+    {
+        get { return _squareControllers; }
+    }
 
     // Positions of the pawns on the board
     [SerializeField] private List<List<BoardPawn>> _pawns;
@@ -218,6 +222,12 @@ public class BoardManager : MonoBehaviour
         return closestPlayer;
     }
 
+    public void SetPositionImmediately(BoardPawn pawn, int newPositionIndex)
+    {
+        UpdatePawnPosition(pawn, newPositionIndex);
+
+        pawn.transform.position = _squareControllers[newPositionIndex].transform.position;
+    }
 
     public void SetPosition(BoardPawn pawn, int newPosition)
     {
@@ -388,8 +398,14 @@ public class BoardManager : MonoBehaviour
         return playersTemp;
     }
 
+    public BoardPath CreateBoardPath(int start, int end)
+    {
+        return new BoardPath(start, end, this);
+    }
+
 }
 
+// TODO: Move logic for creating the path to inside
 public class BoardPath
 {
     private BoardManager _manager;
@@ -397,11 +413,13 @@ public class BoardPath
     private int _destinationIndex;
     private List<Vector3> _points;
 
+    // The distance from the first point to the last
     public int Distance
     {
         get { return _points.Count - 1; }
     }
 
+    // The total number of points
     public int Length
     {
         get { return _points.Count; }

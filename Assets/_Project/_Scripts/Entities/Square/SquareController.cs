@@ -28,12 +28,16 @@ public class BoardElement
         switch (elementEffect)
         {
             case ElementEffect.AddTurns:
+                playerController.GiveTurns((int)modifier);
                 break;
             case ElementEffect.RemoveTurns:
+                playerController.GiveTurns(-(int) modifier);
                 break;
             case ElementEffect.MoveBack:
+                playerController.MoveSpaces(-(int)modifier);
                 break;
             case ElementEffect.MoveForward:
+                playerController.MoveSpaces((int)modifier);
                 break;
             case ElementEffect.GiveHealth:
                 playerController.GiveHealth(20);
@@ -66,19 +70,28 @@ public class BoardElement
 
 public class SquareController : MonoBehaviour
 {
-    float _onSquareTime;
 
-    private BoardElement _element;
+     private BoardElement _element;
+    [SerializeField] private BoardItemController _itemController;
+    [SerializeField] private GameObject _itemGO;
 
-    // Executes when a pawn lands on the square
-    public void OnLand(BoardPawn _pawn)
+    // Executes when a pawn lands on the square. returns true if item is present
+    public bool OnLand(BoardPawn _pawn)
     {
         Debug.Log("Land" + _pawn.id.ToString());
 
-        if (_pawn is PlayerController playerController)
+        if (_itemGO != null)
         {
+            if (_pawn is PlayerController playerController)
+            {
+                _itemGO.SetActive(true);
+                _itemController.ApplyEffect(playerController);
+            }
 
+            return true;
         }
+
+        return false;
     }
 
     // Executes when a pawn remains on the square
@@ -99,12 +112,36 @@ public class SquareController : MonoBehaviour
     }
 
 
-    public void AddItem()
+    public void AddItem(GameObject boardItemGameObject)
     {
+        BoardItemController itemController = boardItemGameObject.GetComponent<BoardItemController>();
 
+        if (itemController == null)
+        {
+            Debug.LogError("No item controller is attached!");
+            return;
+        }
+
+        _itemController = itemController;
+        _itemGO = boardItemGameObject;
+
+        boardItemGameObject.transform.position = transform.position;
+
+        boardItemGameObject.SetActive(false);
     }
 
     public void RemoveItem()
+    {
+        if(_itemGO == null || _itemController == null) {
+            return;
+        }
+
+        Destroy(_itemGO);
+        _itemGO = null;
+        _itemController = null;
+    }
+
+    private void Update()
     {
 
     }
