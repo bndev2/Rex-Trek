@@ -115,9 +115,11 @@ public class PlayerController : BoardPawn
     {
         _onTakeDamage.Invoke();
 
-        float currentHealth = _entityStats.currentHealth;
+        GameManager.Instance.DecreasePlayerHealth(this.id, damageAmount);
 
-        _entityStats.SetCurrentHealth(Mathf.Clamp(currentHealth - damageAmount, 0, _entityStats.maxHealth));
+        //float currentHealth = _entityStats.currentHealth;
+
+        //_entityStats.SetCurrentHealth(Mathf.Clamp(currentHealth - damageAmount, 0, _entityStats.maxHealth));
 
         SoundFXManager.instance.PlaySoundAtTransform(_sfxDamage, transform);
 
@@ -126,13 +128,20 @@ public class PlayerController : BoardPawn
 
     public void GiveHealth(float healthToGive)
     {
-        float currentHealth = _entityStats.currentHealth;
+        GameManager.Instance.IncreasePlayerHealth(this.id, healthToGive);
 
-        _entityStats.SetCurrentHealth(Mathf.Clamp(currentHealth + healthToGive, 0, _entityStats.maxHealth));
+        //float currentHealth = _entityStats.currentHealth;
+
+        //_entityStats.SetCurrentHealth(Mathf.Clamp(currentHealth + healthToGive, 0, _entityStats.maxHealth));
 
         SoundFXManager.instance.PlaySoundAtTransform(_sfxDamage, transform);
 
         UpdateUI();
+    }
+
+    public void GiveExperience(float experienceToGive)
+    {
+        GameManager.Instance.IncreasePlayerExperience(this.id, experienceToGive);
     }
 
     public void MoveSpaces(int spacesToMove)
@@ -162,11 +171,11 @@ public class PlayerController : BoardPawn
         {
             if (id == "Player 1")
             {
-                _menusManager.UpdateHealthUI(_entityStats.currentScaledHealth, true);
+                _menusManager.UpdateHealthUI(GameManager.Instance.GetPlayerStats(this.id).scaledHealth, true);
             }
             else if (id == "Player 2")
             {
-                _menusManager.UpdateHealthUI(_entityStats.currentScaledHealth, false);
+                _menusManager.UpdateHealthUI(GameManager.Instance.GetPlayerStats(this.id).scaledHealth, false);
             }
         }
     }

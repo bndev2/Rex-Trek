@@ -40,6 +40,12 @@ public class RexController : BoardPawn
         int spacesToMove = closestPlayerDirection * Mathf.Min(path.Count - 1, closestPlayerDistance);
 
         _hasMovedThisTurn = true;
+
+        if(closestPlayerDistance == 0)
+        {
+            FinishMove();
+        }
+
         _boardManager.SetPosition(this, _boardManager.GetPositionOnBoardActual(this) + spacesToMove);
     }
 
@@ -117,7 +123,11 @@ public class RexController : BoardPawn
     private void FinishMove()
     {
         _onMoveEnd.Invoke();
-        transform.position = _path[_path.Count - 1];
+
+        if (_path.Count > 0)
+        {
+            transform.position = _path[_path.Count - 1];
+        }
         ChangeState(PawnState.Idle);
         _path.Clear();
         FinishTurn();
