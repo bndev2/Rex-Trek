@@ -1,9 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
 public class BattleManager : MonoBehaviour
 {
+
+    [SerializeField] PlayerBattler _testPlayer;
+    [SerializeField] AIBattler _testEnemy;
+
     [SerializeField] private BattleMenuManager _menusManager;
 
     [SerializeField] private GameObject _enemyPrefab;
@@ -14,8 +19,12 @@ public class BattleManager : MonoBehaviour
 
     private PlayerBattler _player;
     private AIBattler _enemy;
+    public AIBattler enemy
+    {
+        get { return _enemy; }
+    }
 
-    private Queue<Battler> _battlers;
+    private Queue<Battler> _battlers = new Queue<Battler>();
     private Battler _currentBattler;
     public Battler currentBattler
     {
@@ -53,18 +62,26 @@ public class BattleManager : MonoBehaviour
         _currentBattler = _battlers.Peek();
 
         _battlers.Enqueue(oldBattler);
+
+        _currentBattler.onTurnStart.Invoke();
     }
 
     public void OnMoveExecution(Battler origin, Battler opponent)
     {
 
-        // Move the camera to the target
+        StartCoroutine(OnMoveRoutine());
+    }
 
-        // Coroutine delay
+    private IEnumerator OnMoveRoutine()
+    {
+        _currentBattler = null;
 
-        // Move it back
+        yield return new WaitForSeconds(1.5f);
 
-        // Finish the turn
+        UpdateUI();
+
+        yield return new WaitForSeconds(1.5f);
+
         FinishCurrentTurn();
     }
 
@@ -77,7 +94,27 @@ public class BattleManager : MonoBehaviour
         // Switch to overworld
     }
 
-public void FinishCurrentTurn()
+    public Battler GetBattlerAdjacent(Battler battler, bool isNext)
+    {
+        List<Battler> battlerList = new List<Battler>(_battlers);
+        int battlerIndex = battlerList.IndexOf(battler);
+
+        if (isNext)
+        {
+            // Get the next battler in the list, wrapping around to the start if necessary
+            battlerIndex = (battlerIndex + 1) % battlerList.Count;
+        }
+        else
+        {
+            // Get the previous battler in the list, wrapping around to the end if necessary
+            battlerIndex = (battlerIndex - 1 + battlerList.Count) % battlerList.Count;
+        }
+
+        return battlerList[battlerIndex];
+    }
+
+
+    public void FinishCurrentTurn()
     {
         SwitchToNextBattler();
     }
@@ -98,4 +135,39 @@ public void FinishCurrentTurn()
         // Give experience to game manager
     }
 
+
+    private void Awake()
+    {
+        _player = _testPlayer;
+        _enemy = _testEnemy;
+
+        _enemy.Initialize(new CharacterStats("Enemy"), this);
+        _player.Initialize(new CharacterStats("Player"), this);
+
+        _enemy.stats.SetMaxHealth(200);
+        _enemy.stats.SetHealth(200);
+
+        _player.ChangeTarget(_enemy);
+        _enemy.ChangeTarget(_player);
+
+        // Initialize the queue
+        _battlers = new Queue<Battler>();
+
+        // Add the player and enemy to the queue
+        _battlers.Enqueue(_player);
+        _battlers.Enqueue(_enemy);
+
+        _currentBattler = _battlers.Peek();
+
+        // update the UI
+        _menusManager.UpdateStatsUI(_player.stats, true);
+        _menusManager.UpdateStatsUI(_player.stats, false);
+    }
+
+
+    private void UpdateUI()
+    {
+        _menusManager.UpdateStatsUI(_player.stats, true);
+        _menusManager.UpdateStatsUI(_enemy.stats, false);
+    }
 }

@@ -6,8 +6,8 @@ using UnityEngine.UI;
 
 public class BattleMenuManager : MonoBehaviour
 {
-    [SerializeField] private Image _sliderPlayerHealth;
-    [SerializeField] private Image _sliderEnemyHealth;
+    [SerializeField] private Slider _sliderPlayerHealth;
+    [SerializeField] private Slider _sliderEnemyHealth;
 
     [SerializeField] private GameObject _menuPlayerTurn;
     [SerializeField] private GameObject _menuEnemyTurn;
@@ -35,13 +35,24 @@ public class BattleMenuManager : MonoBehaviour
 
     public void UpdateStatsUI(CharacterStats characterStats, bool isPlayer)
     {
-        if(isPlayer)
+        if (isPlayer)
         {
-            _sliderPlayerHealth.fillAmount = characterStats.scaledHealth;
+            LeanTween.value(gameObject, UpdatePlayerHealthBar, _sliderPlayerHealth.value, characterStats.scaledHealth, 1f);
         }
-        else if (isPlayer)
+        else if (!isPlayer)
         {
-            _sliderEnemyHealth.fillAmount = characterStats.scaledHealth;
+            LeanTween.value(gameObject, UpdateEnemyHealthBar, _sliderEnemyHealth.value, characterStats.scaledHealth, 1f);
         }
     }
+
+    private void UpdatePlayerHealthBar(float value)
+    {
+        _sliderPlayerHealth.value = value;
+    }
+
+    private void UpdateEnemyHealthBar(float value)
+    {
+        _sliderEnemyHealth.value = value;
+    }
+
 }

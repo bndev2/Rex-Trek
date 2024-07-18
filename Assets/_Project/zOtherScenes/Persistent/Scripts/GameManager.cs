@@ -240,6 +240,13 @@ public class CharacterStats
         return false; // No level up
     }
 
+    public void SetMaxHealth(float newMaxHealth)
+    {
+        _maxHealth = newMaxHealth;
+
+        _health = Mathf.Clamp(_health, 0, _maxHealth);
+
+    }
 
     public CharacterStats(string id)
     {

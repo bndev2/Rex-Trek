@@ -4,6 +4,25 @@ using UnityEngine;
 
 public class AIBattler : Battler
 {
+    [SerializeField] private Animator _animator;
+
+    private IEnumerator HandleAttackCurrent()
+    {
+        _animator.CrossFade("Attack", .05f);
+
+        yield return new WaitForSeconds(1);
+
+        _animator.CrossFade("Idle", .05f);
+
+        _currentTarget.Damage(4);
+
+        _manager.OnMoveExecution(this, _currentTarget);
+    }
+
+    public override void OnPlayerTurnStart()
+    {
+        AttackCurrent();
+    }
     public override void Attack(Battler battler)
     {
         // Implement player attack logic here
@@ -11,7 +30,7 @@ public class AIBattler : Battler
 
     public override void AttackCurrent()
     {
-        // Implement player attack current logic here
+        StartCoroutine(HandleAttackCurrent());
     }
 
     public override void Run()
@@ -29,5 +48,7 @@ public class AIBattler : Battler
         float actualDamage = damage - stats.level * 2;
 
         _stats.SetHealth(_stats.health - actualDamage);
+
+        Debug.Log("Youch that hurt! " + stats.health.ToString());
     }
 }

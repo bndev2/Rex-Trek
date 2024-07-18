@@ -1,9 +1,19 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEditor.Experimental.GraphView.GraphView;
 
 public class PlayerBattler : Battler, IHasGun
 {
+    [SerializeField] private AudioSource _audioSource;
+    [SerializeField] private AudioClip _playerTurnStart;
+    [SerializeField] private AudioClip _rifleTest;
+
+    public override void OnPlayerTurnStart()
+    {
+        _audioSource.PlayOneShot(_playerTurnStart);
+    }
+
     public override void Attack(Battler battler)
     {
         if(_manager.currentBattler != this)
@@ -14,10 +24,22 @@ public class PlayerBattler : Battler, IHasGun
 
     public override void AttackCurrent()
     {
+
         if (_manager.currentBattler != this)
         {
             return;
         }
+        if(_currentTarget == null)
+        {
+            return;
+        }
+
+        _audioSource.PlayOneShot(_rifleTest);
+
+        // damage the target
+        _currentTarget.Damage(5);
+
+        _manager.OnMoveExecution(this, _currentTarget);
     }
 
     public override void Run()
@@ -76,6 +98,36 @@ public class PlayerBattler : Battler, IHasGun
     {
         float actualDamage = damage - stats.level * 2;
 
+        actualDamage = actualDamage + Random.Range(.1f, 1);
+
         _stats.SetHealth(_stats.health - actualDamage);
+    }
+
+    public void SwitchToNextTarget()
+    {
+        if (_manager.currentBattler != this)
+        {
+            return;
+        }
+
+        _currentTarget = _manager.GetBattlerAdjacent(_currentTarget, true);
+
+        Debug.Log(_currentTarget.stats.id);
+    }
+
+    public void SwitchToPreviousTarget()
+    {
+        if (_manager.currentBattler != this)
+        {
+            return;
+        }
+
+        _currentTarget = _manager.GetBattlerAdjacent(_currentTarget, false);
+
+        Debug.Log(_currentTarget.stats.id);
+    }
+
+    void Start() {
+        _currentTarget = _manager.enemy;
     }
 }
