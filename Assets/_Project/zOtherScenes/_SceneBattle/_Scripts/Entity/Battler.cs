@@ -29,6 +29,7 @@ public abstract class Battler : MonoBehaviour
         UpdateUI();
     }
 
+    public abstract void OnWin();
     public abstract void OnPlayerTurnStart();
 
     public abstract void Attack(Battler battler);

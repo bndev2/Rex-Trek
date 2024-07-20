@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEditor.Experimental.GraphView;
 using UnityEditor.Rendering;
 using UnityEngine;
+using UnityEngine.Audio;
 using UnityEngine.SceneManagement;
 
 public enum LevelState{
@@ -12,6 +13,7 @@ public enum LevelState{
 
 public class GameManager : MonoBehaviour
 {
+
     // Singleton instance
     public static GameManager Instance { get; private set; }
     private void Awake()
@@ -44,6 +46,7 @@ public class GameManager : MonoBehaviour
         switch (state)
         {
             case LevelState.Overworld:
+                DeactivateScene("DefaultScene");
                 break;
             case LevelState.Battle:
                 SceneManager.UnloadSceneAsync("BattleScene");
@@ -55,8 +58,7 @@ public class GameManager : MonoBehaviour
         switch (state)
         {
             case LevelState.Overworld:
-                SceneManager.LoadScene("DefaultScene");
-                // Plop the relevant data into persistent data
+                ActivateScene("DefaultScene");
                 break;
             case LevelState.Battle:
                 // Plop the relevant data into persistent data
@@ -65,6 +67,30 @@ public class GameManager : MonoBehaviour
             default:
                 break;
 
+        }
+    }
+
+    public void DeactivateScene(string sceneName)
+    {
+        Scene scene = SceneManager.GetSceneByName(sceneName);
+        if (scene.isLoaded)
+        {
+            foreach (GameObject rootObject in scene.GetRootGameObjects())
+            {
+                rootObject.SetActive(false);
+            }
+        }
+    }
+
+    public void ActivateScene(string sceneName)
+    {
+        Scene scene = SceneManager.GetSceneByName(sceneName);
+        if (scene.isLoaded)
+        {
+            foreach (GameObject rootObject in scene.GetRootGameObjects())
+            {
+                rootObject.SetActive(true);
+            }
         }
     }
 
@@ -81,6 +107,10 @@ public class GameManager : MonoBehaviour
         _battleOpponent = opponentStats;
 
         ChangeState(LevelState.Battle);
+
+        BattleManager battleManager = FindFirstObjectByType<BattleManager>();
+
+        battleManager.Initialize(playerStats, opponentStats);
     }
 
     public void StartBattle(string playerID, CharacterStats opponentStats)
@@ -167,6 +197,14 @@ public class GameManager : MonoBehaviour
 
 public class CharacterStats
 {
+    private int _money;
+    public int money
+    {
+        get
+        {
+            return _money;
+        }
+    }
     public float scaledHealth
     {
         get
@@ -233,6 +271,8 @@ public class CharacterStats
 
         _maxHealth = _level * 100;
 
+        _health = _maxHealth;
+
         if (oldLevel < _level)
         {
             return true; // Level up!
@@ -246,6 +286,11 @@ public class CharacterStats
 
         _health = Mathf.Clamp(_health, 0, _maxHealth);
 
+    }
+
+    public void SetMoney(int newMoney)
+    {
+        _money = newMoney;
     }
 
     public CharacterStats(string id)

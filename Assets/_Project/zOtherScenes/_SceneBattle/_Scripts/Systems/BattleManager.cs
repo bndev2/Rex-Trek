@@ -1,10 +1,19 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
+using Unity.VisualScripting.Dependencies.Sqlite;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.Rendering;
 
 public class BattleManager : MonoBehaviour
 {
+    [SerializeField] private BattlePlayerInputManager _playerInputManager;
+
+    [SerializeField] private AudioSource _audioSourceMusic;
+    [SerializeField] private AudioClip _audioClipVictoryMusic;
+    [SerializeField] private AudioClip _audioClipBattleMusic;
+
 
     [SerializeField] PlayerBattler _testPlayer;
     [SerializeField] AIBattler _testEnemy;
@@ -25,6 +34,7 @@ public class BattleManager : MonoBehaviour
     }
 
     private Queue<Battler> _battlers = new Queue<Battler>();
+
     private Battler _currentBattler;
     public Battler currentBattler
     {
@@ -34,34 +44,65 @@ public class BattleManager : MonoBehaviour
         }
     }
 
+    private int _moneyToAward = 0;
+    private float _experienceToAward = 0;
+
+    private AIBattler CreateAIBattler(CharacterStats stats)
+    {
+        switch (stats.id)
+        {
+            case ("Raptor"):
+                GameObject enemyGO = Instantiate(_enemyPrefab, _enemySpawnLocation.position, _enemySpawnLocation.rotation);
+                _enemy = enemyGO.OverwriteComponent<AIBattler>();
+                _enemy.Initialize(stats, this);
+                return _enemy;
+                break;
+
+        }
+        return null;
+    }
+
+    private PlayerBattler CreatePlayerBattler(CharacterStats stats)
+    {
+        switch (stats.id)
+        {
+            case ("Player 1"):
+                GameObject playerGO = Instantiate(_playerPrefab, _playerSpawnLocation.position, _playerSpawnLocation.rotation);
+                _player = playerGO.OverwriteComponent<PlayerBattler>();
+                _player.Initialize(stats, this);
+                return _player;
+        }
+        return null;
+    }
+
     public void Initialize(CharacterStats playerStats, CharacterStats opponentStats)
     {
         // spawn prefab for player and attach
-        GameObject playerGO = Instantiate(_playerPrefab, _playerSpawnLocation.position, _playerSpawnLocation.rotation);
-        _player = playerGO.OverwriteComponent<PlayerBattler>();
-        _player.Initialize(playerStats, this);
+        _player = CreatePlayerBattler(playerStats);
 
-        GameObject enemyGO = Instantiate(_enemyPrefab, _enemySpawnLocation.position, _enemySpawnLocation.rotation);
-        _enemy = enemyGO.OverwriteComponent<AIBattler>();
-        _enemy.Initialize(opponentStats, this);
+        _enemy = CreateAIBattler(opponentStats);
 
         _player.ChangeTarget(_enemy);
         _enemy.ChangeTarget(_player);
+
+        _playerInputManager.Initialize(_player);
 
         _currentBattler = _player;
 
         // update the UI
         _menusManager.UpdateStatsUI(_player.stats, true);
         _menusManager.UpdateStatsUI(_player.stats, false);
+
+        _currentBattler.onTurnStart.Invoke();
     }
 
     private void SwitchToNextBattler()
     {
         Battler oldBattler = _battlers.Dequeue();
 
-        _currentBattler = _battlers.Peek();
-
         _battlers.Enqueue(oldBattler);
+
+        _currentBattler = _battlers.Peek();
 
         _currentBattler.onTurnStart.Invoke();
     }
@@ -76,22 +117,33 @@ public class BattleManager : MonoBehaviour
     {
         _currentBattler = null;
 
-        yield return new WaitForSeconds(1.5f);
+        yield return new WaitForSeconds(.5f);
 
         UpdateUI();
 
-        yield return new WaitForSeconds(1.5f);
+        yield return new WaitForSeconds(.5f);
+
+        ClearDead();
+
+        yield return new WaitForSeconds(.5f);
 
         FinishCurrentTurn();
     }
 
     public void OnBattleEnd()
     {
-        // give the player xp
+        foreach(var battler in _battlers)
+        {
+            battler.OnWin();
+        }
 
-        // coroutine
+        _player.stats.SetExperience(_player.stats.experience + _experienceToAward);
+        _player.stats.SetMoney(_player.stats.money + _moneyToAward);
 
-        // Switch to overworld
+        _audioSourceMusic.clip = _audioClipVictoryMusic;
+        _audioSourceMusic.Play();
+
+        _menusManager.ChangeMenu("Win", page1Text: "You got " + _experienceToAward + " experience.", page2Text: "You got " + _moneyToAward + " money.");
     }
 
     public Battler GetBattlerAdjacent(Battler battler, bool isNext)
@@ -113,10 +165,22 @@ public class BattleManager : MonoBehaviour
         return battlerList[battlerIndex];
     }
 
+    //public AIBattler GetAIBattler()
+    //{
+
+    //}
 
     public void FinishCurrentTurn()
     {
-        SwitchToNextBattler();
+        if(CountEnemies() > 0)
+        {
+            SwitchToNextBattler();
+        }
+        else
+        {
+            Debug.Log("All enemies are dead");
+            OnBattleEnd();
+        }
     }
 
     public void StartTurn() { 
@@ -135,6 +199,57 @@ public class BattleManager : MonoBehaviour
         // Give experience to game manager
     }
 
+    private List<Battler> GetDeaths()
+    {
+
+        var tempList = new List<Battler>();
+        foreach(Battler battler in _battlers)
+        {
+            if (battler.stats.health == 0)
+            {
+                tempList.Add(battler);
+            }
+        }
+
+        return tempList;
+    }
+
+    private void ClearDead()
+    {
+        List<Battler> deaths = GetDeaths();
+
+        if (deaths != null)
+        {
+            foreach (var death in deaths)
+            {
+                _moneyToAward += death.stats.money;
+
+                _experienceToAward += death.stats.level * 10;
+
+                Destroy(death.gameObject);
+
+                RemoveFromQue(death);
+            }
+        }
+
+
+    }
+
+    private void RemoveFromQue(Battler battler)
+    {
+        Queue<Battler> tempBattlers = new Queue<Battler>();
+
+        foreach (Battler _battler in _battlers)
+        {
+            if (battler != _battler)
+            {
+                tempBattlers.Enqueue(_battler);
+            }
+        }
+
+        _battlers = tempBattlers;
+    }
+
 
     private void Awake()
     {
@@ -150,6 +265,8 @@ public class BattleManager : MonoBehaviour
         _player.ChangeTarget(_enemy);
         _enemy.ChangeTarget(_player);
 
+        _enemy.stats.SetMoney(200);
+
         // Initialize the queue
         _battlers = new Queue<Battler>();
 
@@ -162,8 +279,22 @@ public class BattleManager : MonoBehaviour
         // update the UI
         _menusManager.UpdateStatsUI(_player.stats, true);
         _menusManager.UpdateStatsUI(_player.stats, false);
+
+        _currentBattler.onTurnStart.Invoke();
     }
 
+    private int CountEnemies()
+    {
+        int enemyCount = 0;
+        foreach (Battler battler in _battlers)
+        {
+            if (battler is AIBattler)
+            {
+                enemyCount++;
+            }
+        }
+        return enemyCount;
+    }
 
     private void UpdateUI()
     {

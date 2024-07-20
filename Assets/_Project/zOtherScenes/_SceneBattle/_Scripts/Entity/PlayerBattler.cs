@@ -1,3 +1,4 @@
+using MyAssets;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,13 +6,31 @@ using static UnityEditor.Experimental.GraphView.GraphView;
 
 public class PlayerBattler : Battler, IHasGun
 {
+
+    [SerializeField] Animator _animator;
     [SerializeField] private AudioSource _audioSource;
     [SerializeField] private AudioClip _playerTurnStart;
-    [SerializeField] private AudioClip _rifleTest;
+
+    [SerializeField] private Gun _gun;
+
+    [SerializeField] private DamageFlash _damageFlash;
+    [SerializeField] private AudioClip _sfxDamage;
+
+    public override void OnWin()
+    {
+        _animator.Play("Dance");
+        _gun.gameObject.SetActive(false);
+    }
 
     public override void OnPlayerTurnStart()
     {
         _audioSource.PlayOneShot(_playerTurnStart);
+        _canAttack = true;
+
+        if(_currentTarget == null)
+        {
+            //_currentTarget = _manager.battlers.Peek();
+        }
     }
 
     public override void Attack(Battler battler)
@@ -20,11 +39,16 @@ public class PlayerBattler : Battler, IHasGun
         {
             return;
         }
+
+        StartCoroutine(HandleShoot(battler));
     }
 
     public override void AttackCurrent()
     {
-
+        if (_canAttack == false)
+        {
+            return;
+        }
         if (_manager.currentBattler != this)
         {
             return;
@@ -34,13 +58,21 @@ public class PlayerBattler : Battler, IHasGun
             return;
         }
 
-        _audioSource.PlayOneShot(_rifleTest);
+        _canAttack = false;
 
-        // damage the target
-        _currentTarget.Damage(5);
+        StartCoroutine(HandleShoot(_currentTarget));
+    }
 
+    public IEnumerator HandleShoot(Battler target)
+    {
+
+        // gun specific behaviour eg firing
+        yield return StartCoroutine(_gun.FireBarrage(this, target, dmgMultiplier: 4));
+
+        // Tell the battle manager
         _manager.OnMoveExecution(this, _currentTarget);
     }
+
 
     public override void Run()
     {
@@ -96,6 +128,16 @@ public class PlayerBattler : Battler, IHasGun
 
     public override void Damage(float damage)
     {
+        if(_damageFlash != null)
+        {
+            _damageFlash.PlayFlash();
+        }
+
+        if (_sfxDamage != null)
+        {
+            SoundFXManager.instance.PlaySoundAtTransform(_sfxDamage, transform);
+        }
+
         float actualDamage = damage - stats.level * 2;
 
         actualDamage = actualDamage + Random.Range(.1f, 1);
