@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Reflection;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -8,6 +9,10 @@ public class BattleMenuManager : MonoBehaviour
 {
     [SerializeField] private Slider _sliderPlayerHealth;
     [SerializeField] private Slider _sliderEnemyHealth;
+    [SerializeField] private TextMeshProUGUI _enemyIDText;
+    [SerializeField] private TextMeshProUGUI _playerIDText;
+    [SerializeField] private TextMeshProUGUI _playerLevelText;
+    [SerializeField] private TextMeshProUGUI _enemyLevelText;
 
     [SerializeField] private MultiPageText _multiPageText;
 
@@ -57,10 +62,31 @@ public class BattleMenuManager : MonoBehaviour
         if (isPlayer)
         {
             LeanTween.value(gameObject, UpdatePlayerHealthBar, _sliderPlayerHealth.value, characterStats.scaledHealth, 1f);
+            _playerIDText.text = characterStats.id;
+            _playerLevelText.text = "Level " + characterStats.level.ToString();
         }
         else if (!isPlayer)
         {
             LeanTween.value(gameObject, UpdateEnemyHealthBar, _sliderEnemyHealth.value, characterStats.scaledHealth, 1f);
+            _enemyIDText.text = characterStats.id;
+            _enemyLevelText.text = "Level " + characterStats.level.ToString();
+        }
+    }
+
+    public void UpdateStatsUIInstant(CharacterStats characterStats, bool isPlayer)
+    {
+
+        if (isPlayer)
+        {
+            _sliderPlayerHealth.value = characterStats.scaledHealth;
+            _playerIDText.text = characterStats.id;
+            _playerLevelText.text = "Level " + characterStats.level.ToString();
+        }
+        else if (!isPlayer)
+        {
+            _sliderEnemyHealth.value = characterStats.scaledHealth;
+            _enemyIDText.text = characterStats.id;
+            _enemyLevelText.text = "Level " + characterStats.level.ToString();
         }
     }
 

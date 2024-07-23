@@ -18,7 +18,7 @@ public class PlayerBattler : Battler, IHasGun
 
     public override void OnWin()
     {
-        _animator.Play("Dance");
+        //_animator.Play("Dance");
         _gun.gameObject.SetActive(false);
     }
 

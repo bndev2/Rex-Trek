@@ -53,7 +53,7 @@ public class BattleManager : MonoBehaviour
         {
             case ("Raptor"):
                 GameObject enemyGO = Instantiate(_enemyPrefab, _enemySpawnLocation.position, _enemySpawnLocation.rotation);
-                _enemy = enemyGO.OverwriteComponent<AIBattler>();
+                _enemy = enemyGO.GetComponent<AIBattler>();
                 _enemy.Initialize(stats, this);
                 return _enemy;
                 break;
@@ -68,30 +68,41 @@ public class BattleManager : MonoBehaviour
         {
             case ("Player 1"):
                 GameObject playerGO = Instantiate(_playerPrefab, _playerSpawnLocation.position, _playerSpawnLocation.rotation);
-                _player = playerGO.OverwriteComponent<PlayerBattler>();
+                _player = playerGO.GetComponent<PlayerBattler>();
                 _player.Initialize(stats, this);
                 return _player;
         }
         return null;
     }
 
-    public void Initialize(CharacterStats playerStats, CharacterStats opponentStats)
+    public void Initialize(BattleData battleData)
     {
-        // spawn prefab for player and attach
-        _player = CreatePlayerBattler(playerStats);
 
-        _enemy = CreateAIBattler(opponentStats);
+        // spawn prefab for player and attach
+        _player = CreatePlayerBattler(battleData.playerStats);
+
+        _enemy = CreateAIBattler(battleData.opponentStats);
 
         _player.ChangeTarget(_enemy);
         _enemy.ChangeTarget(_player);
 
         _playerInputManager.Initialize(_player);
 
-        _currentBattler = _player;
+
+        // Initialize the queue
+        _battlers = new Queue<Battler>();
+
+        // Add the player and enemy to the queue
+        _battlers.Enqueue(_player);
+        _battlers.Enqueue(_enemy);
+
+
+
+        _currentBattler = _battlers.Peek();
 
         // update the UI
-        _menusManager.UpdateStatsUI(_player.stats, true);
-        _menusManager.UpdateStatsUI(_player.stats, false);
+        _menusManager.UpdateStatsUIInstant(_player.stats, true);
+        _menusManager.UpdateStatsUIInstant(_enemy.stats, false);
 
         _currentBattler.onTurnStart.Invoke();
     }
@@ -172,7 +183,7 @@ public class BattleManager : MonoBehaviour
 
     public void FinishCurrentTurn()
     {
-        if(CountEnemies() > 0)
+        if (CountEnemies() > 0)
         {
             SwitchToNextBattler();
         }
@@ -181,6 +192,8 @@ public class BattleManager : MonoBehaviour
             Debug.Log("All enemies are dead");
             OnBattleEnd();
         }
+
+        
     }
 
     public void StartTurn() { 
@@ -201,11 +214,12 @@ public class BattleManager : MonoBehaviour
 
     private List<Battler> GetDeaths()
     {
-
         var tempList = new List<Battler>();
-        foreach(Battler battler in _battlers)
+        float tolerance = 0.05f; // Define your tolerance value here
+
+        foreach (Battler battler in _battlers)
         {
-            if (battler.stats.health == 0)
+            if (battler.stats.scaledHealth <= tolerance)
             {
                 tempList.Add(battler);
             }
@@ -213,6 +227,7 @@ public class BattleManager : MonoBehaviour
 
         return tempList;
     }
+
 
     private void ClearDead()
     {
@@ -250,37 +265,20 @@ public class BattleManager : MonoBehaviour
         _battlers = tempBattlers;
     }
 
-
-    private void Awake()
+    private void Start()
     {
-        _player = _testPlayer;
-        _enemy = _testEnemy;
 
-        _enemy.Initialize(new CharacterStats("Enemy"), this);
-        _player.Initialize(new CharacterStats("Player"), this);
+        //CharacterStats playerStats = new CharacterStats("Player 1");
+        //CharacterStats enemyStats = new CharacterStats("Raptor");
 
-        _enemy.stats.SetMaxHealth(200);
-        _enemy.stats.SetHealth(200);
+        //enemyStats.SetMaxHealth(300);
+        //enemyStats.SetHealth(300);
 
-        _player.ChangeTarget(_enemy);
-        _enemy.ChangeTarget(_player);
+        //enemyStats.SetMoney(34);
 
-        _enemy.stats.SetMoney(200);
+        //BattleData battleData = new BattleData(playerStats, enemyStats);
 
-        // Initialize the queue
-        _battlers = new Queue<Battler>();
-
-        // Add the player and enemy to the queue
-        _battlers.Enqueue(_player);
-        _battlers.Enqueue(_enemy);
-
-        _currentBattler = _battlers.Peek();
-
-        // update the UI
-        _menusManager.UpdateStatsUI(_player.stats, true);
-        _menusManager.UpdateStatsUI(_player.stats, false);
-
-        _currentBattler.onTurnStart.Invoke();
+        //Initialize(battleData);
     }
 
     private int CountEnemies()
@@ -296,9 +294,22 @@ public class BattleManager : MonoBehaviour
         return enemyCount;
     }
 
-    private void UpdateUI()
+    private void UpdateUI(bool isInstant = false)
     {
-        _menusManager.UpdateStatsUI(_player.stats, true);
-        _menusManager.UpdateStatsUI(_enemy.stats, false);
+        Debug.Log("enemy scaled" + _enemy.stats.scaledHealth);
+        if (!isInstant)
+        {
+            _menusManager.UpdateStatsUI(_player.stats, true);
+            _menusManager.UpdateStatsUI(_enemy.stats, false);
+            return;
+        }
+
+        else
+        {
+            _menusManager.UpdateStatsUIInstant(_player.stats, true);
+            _menusManager.UpdateStatsUIInstant(_enemy.stats, false);
+        }
     }
+
+    
 }

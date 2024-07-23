@@ -13,6 +13,38 @@ public enum LevelState{
 
 public class GameManager : MonoBehaviour
 {
+    [SerializeField] private Menus_Manager _overworldMenusManager;
+
+    private bool _hasInitialized = false;
+    private void Start()
+    {
+        if (!_hasInitialized)
+        {
+            Debug.Log("init");
+
+            // Check if the _playerStats list already contains a CharacterStats object for the player
+            CharacterStats player1 = GetCharacterStats("Player 1", _playerStats);
+            if (player1 == null)
+            {
+                // If not, create a new CharacterStats object and add it to the list
+                player1 = new CharacterStats("Player 1");
+                player1.traceID = "Overwog";
+                _playerStats.Add(player1);
+            }
+
+            // Do the same for the second player
+            CharacterStats player2 = GetCharacterStats("Player 2", _playerStats);
+            if (player2 == null)
+            {
+                player2 = new CharacterStats("Player 2");
+                player2.traceID = "Owor";
+                _playerStats.Add(player2);
+            }
+
+            _hasInitialized = true;
+        }
+    }
+
 
     // Singleton instance
     public static GameManager Instance { get; private set; }
@@ -34,10 +66,7 @@ public class GameManager : MonoBehaviour
 
     private List<CharacterStats> _playerStats = new List<CharacterStats>();
 
-
-
-    private CharacterStats _battleOpponent;
-    private CharacterStats _battlePlayer;
+    private BattleData _battleData;
 
     public void ChangeState(LevelState levelState)
     {
@@ -50,6 +79,7 @@ public class GameManager : MonoBehaviour
                 break;
             case LevelState.Battle:
                 SceneManager.UnloadSceneAsync("BattleScene");
+                //EndBattle();
                 break;
         }
 
@@ -59,6 +89,7 @@ public class GameManager : MonoBehaviour
         {
             case LevelState.Overworld:
                 ActivateScene("DefaultScene");
+                UpdateOverworldUI();
                 break;
             case LevelState.Battle:
                 // Plop the relevant data into persistent data
@@ -68,6 +99,12 @@ public class GameManager : MonoBehaviour
                 break;
 
         }
+    }
+
+    private void UpdateOverworldUI()
+    {
+        _overworldMenusManager.UpdateHealthUI(GetPlayerStats("Player 1").scaledHealth, true);
+        _overworldMenusManager.UpdateHealthUI(GetPlayerStats("Player 2").scaledHealth, false);
     }
 
     public void DeactivateScene(string sceneName)
@@ -97,34 +134,45 @@ public class GameManager : MonoBehaviour
     // Delete
     public void BattleSwitch()
     {
-        ChangeState(LevelState.Battle);
+        CharacterStats enemyStats = new CharacterStats("Raptor");
+
+        enemyStats.SetMaxHealth(300);
+        enemyStats.SetHealth(300);
+
+        enemyStats.SetMoney(34);
+
+        enemyStats.SetExperience(Random.Range(0, 500));
+
+        _battleData = new BattleData(_playerStats[1], enemyStats);
+        StartBattle(_battleData);
     }
 
-    public void StartBattle(CharacterStats playerStats, CharacterStats opponentStats)
+    public void StartBattle(BattleData battleData)
     {
-        _battlePlayer = playerStats;
-
-        _battleOpponent = opponentStats;
-
+        _battleData = battleData;
         ChangeState(LevelState.Battle);
-
-        BattleManager battleManager = FindFirstObjectByType<BattleManager>();
-
-        battleManager.Initialize(playerStats, opponentStats);
+        StartCoroutine(InitializeBattle());
     }
 
-    public void StartBattle(string playerID, CharacterStats opponentStats)
+    private IEnumerator InitializeBattle()
     {
-        _battlePlayer = GetPlayerStats(playerID);
+        yield return null; // Wait for one frame
 
-        _battleOpponent = opponentStats;
+        BattleManager battleManager;
+        while ((battleManager = FindFirstObjectByType<BattleManager>()) == null)
+        {
+            yield return null; // Wait for one frame
+        }
 
-        ChangeState(LevelState.Battle);
+        // Pass the CharacterStats from the GameManager to the BattleManager
+        battleManager.Initialize(_battleData);
     }
+
+
 
     public void EndBattle()
     {
-        // Update UI inside main scene
+        _battleData = null;
     }
 
     public void SetPlayerHealth(string id, float health) {
@@ -197,6 +245,7 @@ public class GameManager : MonoBehaviour
 
 public class CharacterStats
 {
+    public string traceID;
     private int _money;
     public int money
     {
@@ -269,12 +318,10 @@ public class CharacterStats
 
         _level = ((int)experience / 100) + 1;
 
-        _maxHealth = _level * 100;
-
-        _health = _maxHealth;
-
         if (oldLevel < _level)
         {
+            _maxHealth = _level * 100;
+            _health = _maxHealth;
             return true; // Level up!
         }
         return false; // No level up
@@ -304,5 +351,26 @@ public class CharacterStats
         _experience = 0;
 
         _maxHealth = 100;
+    }
+}
+
+public class BattleData
+{
+    private CharacterStats _playerStats;
+    private CharacterStats _opponentStats;
+
+    public CharacterStats playerStats
+    {
+        get { return _playerStats; }
+    }
+    public CharacterStats opponentStats
+    {
+        get { return _opponentStats; }
+    }
+
+    public BattleData(CharacterStats playerStats, CharacterStats opponentStats)
+    {
+        _playerStats = playerStats;
+        _opponentStats = opponentStats;
     }
 }

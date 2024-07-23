@@ -6,7 +6,7 @@ using UnityEngine.Events;
 public abstract class Battler : MonoBehaviour
 {
     protected BattleManager _manager;
-    protected CharacterStats _stats;
+    protected CharacterStats _stats = null;
     public CharacterStats stats
     {
         get { return _stats; }
