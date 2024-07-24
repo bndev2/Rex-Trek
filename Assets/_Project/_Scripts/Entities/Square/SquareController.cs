@@ -3,6 +3,73 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
+public interface IBoardElement
+{
+    void Apply(PlayerController playerController);
+    void Remove(PlayerController playerController);
+}
+
+public class AddTurnsElement : IBoardElement
+{
+    [SerializeField] private int _turnsToAdd = 1;
+
+    public void Apply(PlayerController playerController)
+    {
+        playerController.GiveTurns(_turnsToAdd);
+    }
+
+    public void Remove(PlayerController playerController)
+    {
+        // Implement remove behavior here...
+    }
+}
+
+public class MoveElement : IBoardElement
+{
+    [SerializeField] private int _spacesToMove = 1;
+
+    public void Apply(PlayerController playerController)
+    {
+        playerController.MoveSpaces(_spacesToMove);
+    }
+
+    public void Remove(PlayerController playerController)
+    {
+        // Implement remove behavior here...
+    }
+}
+
+public class HealthElement : IBoardElement
+{
+    [SerializeField] private float _healthToGive = 1;
+
+    public void Apply(PlayerController playerController)
+    {
+        playerController.GiveHealth(_healthToGive);
+    }
+
+    public void Remove(PlayerController playerController)
+    {
+        // Implement remove behavior here...
+    }
+}
+
+public class EnterBattleElement : IBoardElement
+{
+    [SerializeField] CharacterStats _enemyCharacterStats;
+
+    public void Apply(PlayerController playerController)
+    {
+        playerController.Engage(_enemyCharacterStats);
+    }
+
+    public void Remove(PlayerController playerController)
+    {
+        // Implement remove behavior here...
+    }
+}
+
+
 public enum ElementEffect
 {
     AddTurns,
@@ -10,6 +77,7 @@ public enum ElementEffect
     MoveBack,
     MoveForward,
     GiveHealth,
+    EnterBattle,
 }
 
 [System.Serializable]
@@ -42,6 +110,8 @@ public class BoardElement
             case ElementEffect.GiveHealth:
                 playerController.GiveHealth(20);
                 break;
+            case ElementEffect.EnterBattle:
+
             default:
                 break;
         }

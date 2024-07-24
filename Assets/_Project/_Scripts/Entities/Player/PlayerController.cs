@@ -11,9 +11,14 @@ public class PlayerController : BoardPawn
     [SerializeField] AudioClip _sfxDamage;
 
     [SerializeField] private Animator _animator;
-    [SerializeField] private EntityStats _entityStats;
 
     [SerializeField] private Menus_Manager _menusManager;
+
+    private CharacterStats _characterStats;
+    public CharacterStats characterStats
+    {
+        get { return _characterStats; }
+    }
 
     private bool _isPaused = false;
 
@@ -165,6 +170,11 @@ public class PlayerController : BoardPawn
         _turnManager.IncreaseTurns(this, turnsToAdd);
     }
 
+    public void Engage(CharacterStats opponentStats)
+    {
+        GameManager.Instance.EnterBattle(this._characterStats, opponentStats);
+    }
+
     private void UpdateUI()
     {
         if (_menusManager != null)
@@ -196,6 +206,8 @@ public class PlayerController : BoardPawn
 
     private void Initialize()
     {
+        _characterStats = GameManager.Instance.CreatePlayerStats(this.id);
+
         UpdateUI();
     }
 

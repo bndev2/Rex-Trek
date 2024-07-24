@@ -22,6 +22,7 @@ public class BattleManager : MonoBehaviour
 
     [SerializeField] private GameObject _enemyPrefab;
     [SerializeField] private GameObject _playerPrefab;
+    [SerializeField] private GameObject _player2Prefab;
 
     [SerializeField] Transform _playerSpawnLocation;
     [SerializeField] Transform _enemySpawnLocation;
@@ -67,16 +68,26 @@ public class BattleManager : MonoBehaviour
         switch (stats.id)
         {
             case ("Player 1"):
+                { 
                 GameObject playerGO = Instantiate(_playerPrefab, _playerSpawnLocation.position, _playerSpawnLocation.rotation);
                 _player = playerGO.GetComponent<PlayerBattler>();
                 _player.Initialize(stats, this);
                 return _player;
+        }
+            case ("Player 2"):
+                {
+                    GameObject playerGO = Instantiate(_player2Prefab, _playerSpawnLocation.position, _playerSpawnLocation.rotation);
+                    _player = playerGO.GetComponent<PlayerBattler>();
+                    _player.Initialize(stats, this);
+                    return _player;
+                }
         }
         return null;
     }
 
     public void Initialize(BattleData battleData)
     {
+        Debug.Log(battleData.playerStats.id);
 
         // spawn prefab for player and attach
         _player = CreatePlayerBattler(battleData.playerStats);

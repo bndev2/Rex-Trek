@@ -5,6 +5,7 @@ using UnityEditor.Rendering;
 using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.SceneManagement;
+using static UnityEditor.Experimental.GraphView.GraphView;
 
 public enum LevelState{
     Overworld,
@@ -18,31 +19,7 @@ public class GameManager : MonoBehaviour
     private bool _hasInitialized = false;
     private void Start()
     {
-        if (!_hasInitialized)
-        {
-            Debug.Log("init");
 
-            // Check if the _playerStats list already contains a CharacterStats object for the player
-            CharacterStats player1 = GetCharacterStats("Player 1", _playerStats);
-            if (player1 == null)
-            {
-                // If not, create a new CharacterStats object and add it to the list
-                player1 = new CharacterStats("Player 1");
-                player1.traceID = "Overwog";
-                _playerStats.Add(player1);
-            }
-
-            // Do the same for the second player
-            CharacterStats player2 = GetCharacterStats("Player 2", _playerStats);
-            if (player2 == null)
-            {
-                player2 = new CharacterStats("Player 2");
-                player2.traceID = "Owor";
-                _playerStats.Add(player2);
-            }
-
-            _hasInitialized = true;
-        }
     }
 
 
@@ -64,7 +41,7 @@ public class GameManager : MonoBehaviour
 
     private LevelState state = LevelState.Overworld;
 
-    private List<CharacterStats> _playerStats = new List<CharacterStats>();
+    [SerializeField] private List<CharacterStats> _playerStats = new List<CharacterStats>();
 
     private BattleData _battleData;
 
@@ -143,8 +120,26 @@ public class GameManager : MonoBehaviour
 
         enemyStats.SetExperience(Random.Range(0, 500));
 
-        _battleData = new BattleData(_playerStats[1], enemyStats);
+        _battleData = new BattleData(_playerStats[0], enemyStats);
         StartBattle(_battleData);
+    }
+
+    public IEnumerator EnterBattle(CharacterStats player, CharacterStats opponent)
+    {
+        BattleData battleData = new BattleData(player, opponent);
+
+        ChangeState(LevelState.Battle);
+
+        yield return null; // Wait for one frame
+
+        BattleManager battleManager;
+        while ((battleManager = FindFirstObjectByType<BattleManager>()) == null)
+        {
+            yield return null; // Wait for one frame
+        }
+
+        // Pass the CharacterStats from the GameManager to the BattleManager
+        battleManager.Initialize(battleData);
     }
 
     public void StartBattle(BattleData battleData)
@@ -166,6 +161,15 @@ public class GameManager : MonoBehaviour
 
         // Pass the CharacterStats from the GameManager to the BattleManager
         battleManager.Initialize(_battleData);
+    }
+
+
+    public CharacterStats CreatePlayerStats(string id)
+    {
+        CharacterStats newStats = new CharacterStats(id);
+        _playerStats.Add(newStats);
+
+        return _playerStats.Find(stats => stats.id == id);
     }
 
 
@@ -243,10 +247,11 @@ public class GameManager : MonoBehaviour
 
 }
 
+[System.Serializable]
 public class CharacterStats
 {
     public string traceID;
-    private int _money;
+    [SerializeField] private int _money;
     public int money
     {
         get
@@ -262,7 +267,7 @@ public class CharacterStats
         }
     }
 
-    private float _maxHealth;
+    [SerializeField] private float _maxHealth;
 
     public float maxHealth
     {
@@ -271,7 +276,7 @@ public class CharacterStats
             return _maxHealth;
         }
     }
-    private string _id;
+    [SerializeField] private string _id;
     public string id
     {
         get
@@ -279,7 +284,7 @@ public class CharacterStats
             return _id;
         }
     }
-    private float _health;
+    [SerializeField] private float _health;
     public float health
     {
         get
@@ -287,7 +292,7 @@ public class CharacterStats
             return _health;
         }
     }
-    private int _level;
+    [SerializeField] private int _level;
     public int level
     {
         get
@@ -295,7 +300,7 @@ public class CharacterStats
             return _level;
         }
     }
-    private float _experience;
+    [SerializeField] private float _experience;
     public float experience
     {
         get { 
