@@ -124,7 +124,12 @@ public class GameManager : MonoBehaviour
         StartBattle(_battleData);
     }
 
-    public IEnumerator EnterBattle(CharacterStats player, CharacterStats opponent)
+    public void EnterBattle(CharacterStats player, CharacterStats opponent)
+    {
+        StartCoroutine(EnterBattleCoroutine(player, opponent));
+    }
+
+    public IEnumerator EnterBattleCoroutine(CharacterStats player, CharacterStats opponent)
     {
         BattleData battleData = new BattleData(player, opponent);
 
@@ -310,10 +315,9 @@ public class CharacterStats
 
     public void SetHealth(float health)
     {
-        this._health = health;
-
-        this._health = Mathf.Clamp(health, 0, _maxHealth);
+        _health = Mathf.Clamp(health, 0, _maxHealth);
     }
+
 
     public bool SetExperience(float experience)
     {
@@ -330,6 +334,16 @@ public class CharacterStats
             return true; // Level up!
         }
         return false; // No level up
+    }
+
+    public void SetLevel(int newLevel)
+    {
+        _experience = (newLevel * 100) + 1;
+
+        _level = newLevel;
+
+        _maxHealth = _level * 100;
+        _health = _maxHealth;
     }
 
     public void SetMaxHealth(float newMaxHealth)
@@ -356,6 +370,17 @@ public class CharacterStats
         _experience = 0;
 
         _maxHealth = 100;
+    }
+
+    public CharacterStats(CharacterStats original)
+    {
+        traceID = original.traceID;
+        _money = original._money;
+        _maxHealth = original._maxHealth;
+        _id = original._id;
+        _health = original._health;
+        _level = original._level;
+        _experience = original._experience;
     }
 }
 

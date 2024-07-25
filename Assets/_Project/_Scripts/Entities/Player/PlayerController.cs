@@ -172,7 +172,7 @@ public class PlayerController : BoardPawn
 
     public void Engage(CharacterStats opponentStats)
     {
-        GameManager.Instance.EnterBattle(this._characterStats, opponentStats);
+       GameManager.Instance.EnterBattle(this._characterStats, opponentStats);
     }
 
     private void UpdateUI()

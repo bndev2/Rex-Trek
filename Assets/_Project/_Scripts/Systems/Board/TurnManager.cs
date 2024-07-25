@@ -162,6 +162,7 @@ public class TurnManager : MonoBehaviour
             {
                 _playerInputController.ChangeState(InputState.Choosing);
             }
+            Debug.Log("Updating ui");
             _menusManager.UpdatePlayerTurnsUI(_pawnTurns[pawn], true);
         }
         else if (pawn.id == "Player 2")

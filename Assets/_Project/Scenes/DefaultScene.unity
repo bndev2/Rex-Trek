@@ -172,6 +172,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b2503db4613e9154181cad6ff102c488, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _squarePopulator: {fileID: 1396355866}
   _squareTransforms:
   - {fileID: 606304967}
   - {fileID: 90829954}
@@ -478,6 +479,61 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 15774286}
   m_Mesh: {fileID: -1860326608950814815, guid: 474db57140759044f8177d9f0d98bb69, type: 3}
+--- !u!1 &31690012
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 31690014}
+  - component: {fileID: 31690013}
+  m_Layer: 0
+  m_Name: _RaptorBattleMidLevel(Clone)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &31690013
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 31690012}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23a678d27015ec145b8157f27106c3be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _isEnemyTypeRandom: 0
+  _minLevel: 2
+  _maxLevel: 4
+  _enemyCharacterStats:
+    traceID: 
+    _money: 20
+    _maxHealth: 100
+    _id: Raptor
+    _health: 200
+    _level: 2
+    _experience: 0
+--- !u!4 &31690014
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 31690012}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 20.608484, y: -7.79839, z: 26.378664}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &41439494
 GameObject:
   m_ObjectHideFlags: 0
@@ -526,7 +582,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &82611813
 RectTransform:
   m_ObjectHideFlags: 0
@@ -833,8 +889,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 755ccf3ddfba5c842a7a0cadf8f827d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _itemController: {fileID: 1748741874}
-  _itemGO: {fileID: 1748741873}
+  _itemController: {fileID: 0}
+  _itemGO: {fileID: 0}
 --- !u!1001 &145383919
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1339,8 +1395,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 755ccf3ddfba5c842a7a0cadf8f827d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _itemController: {fileID: 2049583165}
-  _itemGO: {fileID: 2049583160}
+  _itemController: {fileID: 0}
+  _itemGO: {fileID: 0}
 --- !u!1 &155337528
 GameObject:
   m_ObjectHideFlags: 0
@@ -1476,6 +1532,116 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Padding: {x: -8, y: -5, z: -8, w: -5}
   m_Softness: {x: 0, y: 0}
+--- !u!1 &175372682
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 175372684}
+  - component: {fileID: 175372683}
+  m_Layer: 0
+  m_Name: _RaptorBattleMidLevel(Clone)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &175372683
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 175372682}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23a678d27015ec145b8157f27106c3be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _isEnemyTypeRandom: 0
+  _minLevel: 2
+  _maxLevel: 4
+  _enemyCharacterStats:
+    traceID: 
+    _money: 20
+    _maxHealth: 100
+    _id: Raptor
+    _health: 200
+    _level: 2
+    _experience: 0
+--- !u!4 &175372684
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 175372682}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 20.608484, y: -7.79839, z: 26.378664}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &192184164
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 192184166}
+  - component: {fileID: 192184165}
+  m_Layer: 0
+  m_Name: _RaptorBattleMidLevel(Clone)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &192184165
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 192184164}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23a678d27015ec145b8157f27106c3be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _isEnemyTypeRandom: 0
+  _minLevel: 2
+  _maxLevel: 4
+  _enemyCharacterStats:
+    traceID: 
+    _money: 20
+    _maxHealth: 100
+    _id: Raptor
+    _health: 200
+    _level: 2
+    _experience: 0
+--- !u!4 &192184166
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 192184164}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 20.608484, y: -7.79839, z: 26.378664}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &194510710
 GameObject:
   m_ObjectHideFlags: 0
@@ -1597,6 +1763,61 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _itemController: {fileID: 0}
   _itemGO: {fileID: 0}
+--- !u!1 &198524294
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 198524296}
+  - component: {fileID: 198524295}
+  m_Layer: 0
+  m_Name: _RaptorBattleMidLevel(Clone)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &198524295
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 198524294}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23a678d27015ec145b8157f27106c3be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _isEnemyTypeRandom: 0
+  _minLevel: 2
+  _maxLevel: 4
+  _enemyCharacterStats:
+    traceID: 
+    _money: 20
+    _maxHealth: 100
+    _id: Raptor
+    _health: 200
+    _level: 2
+    _experience: 0
+--- !u!4 &198524296
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 198524294}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 20.608484, y: -7.79839, z: 26.378664}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &205178515
 GameObject:
   m_ObjectHideFlags: 0
@@ -1832,6 +2053,116 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 240259266}
   m_Mesh: {fileID: -1860326608950814815, guid: 474db57140759044f8177d9f0d98bb69, type: 3}
+--- !u!1 &240404994
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 240404996}
+  - component: {fileID: 240404995}
+  m_Layer: 0
+  m_Name: _RaptorBattleMidLevel(Clone)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &240404995
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 240404994}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23a678d27015ec145b8157f27106c3be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _isEnemyTypeRandom: 0
+  _minLevel: 2
+  _maxLevel: 4
+  _enemyCharacterStats:
+    traceID: 
+    _money: 20
+    _maxHealth: 100
+    _id: Raptor
+    _health: 200
+    _level: 2
+    _experience: 0
+--- !u!4 &240404996
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 240404994}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 20.608484, y: -7.79839, z: 26.378664}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &245107479
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 245107481}
+  - component: {fileID: 245107480}
+  m_Layer: 0
+  m_Name: _RaptorBattleMidLevel(Clone)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &245107480
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 245107479}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23a678d27015ec145b8157f27106c3be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _isEnemyTypeRandom: 0
+  _minLevel: 2
+  _maxLevel: 4
+  _enemyCharacterStats:
+    traceID: 
+    _money: 20
+    _maxHealth: 100
+    _id: Raptor
+    _health: 200
+    _level: 2
+    _experience: 0
+--- !u!4 &245107481
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 245107479}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 20.608484, y: -7.79839, z: 26.378664}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &246778916
 GameObject:
   m_ObjectHideFlags: 0
@@ -2981,6 +3312,61 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2ed5daf031761a24d8d740c0f7f639ad, type: 3}
+--- !u!1 &282924205
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 282924207}
+  - component: {fileID: 282924206}
+  m_Layer: 0
+  m_Name: _RaptorBattleMidLevel(Clone)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &282924206
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 282924205}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23a678d27015ec145b8157f27106c3be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _isEnemyTypeRandom: 0
+  _minLevel: 2
+  _maxLevel: 4
+  _enemyCharacterStats:
+    traceID: 
+    _money: 20
+    _maxHealth: 100
+    _id: Raptor
+    _health: 200
+    _level: 2
+    _experience: 0
+--- !u!4 &282924207
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 282924205}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 20.608484, y: -7.79839, z: 26.378664}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &283853612
 GameObject:
   m_ObjectHideFlags: 0
@@ -3102,6 +3488,61 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 283853612}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &298154494
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 298154496}
+  - component: {fileID: 298154495}
+  m_Layer: 0
+  m_Name: _RaptorBattleMidLevel(Clone)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &298154495
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 298154494}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23a678d27015ec145b8157f27106c3be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _isEnemyTypeRandom: 0
+  _minLevel: 2
+  _maxLevel: 4
+  _enemyCharacterStats:
+    traceID: 
+    _money: 20
+    _maxHealth: 100
+    _id: Raptor
+    _health: 200
+    _level: 2
+    _experience: 0
+--- !u!4 &298154496
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 298154494}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 20.608484, y: -7.79839, z: 26.378664}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &315477163
 GameObject:
   m_ObjectHideFlags: 0
@@ -3186,6 +3627,61 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 315477163}
   m_Mesh: {fileID: -3142649664740890969, guid: 474db57140759044f8177d9f0d98bb69, type: 3}
+--- !u!1 &321249224
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 321249226}
+  - component: {fileID: 321249225}
+  m_Layer: 0
+  m_Name: _RaptorBattleMidLevel(Clone)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &321249225
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 321249224}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23a678d27015ec145b8157f27106c3be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _isEnemyTypeRandom: 0
+  _minLevel: 2
+  _maxLevel: 4
+  _enemyCharacterStats:
+    traceID: 
+    _money: 20
+    _maxHealth: 100
+    _id: Raptor
+    _health: 200
+    _level: 2
+    _experience: 0
+--- !u!4 &321249226
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 321249224}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 20.608484, y: -7.79839, z: 26.378664}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &330585543
 GameObject:
   m_ObjectHideFlags: 0
@@ -3323,6 +3819,61 @@ MonoBehaviour:
     mipBias: 0
     varianceClampScale: 0.9
     contrastAdaptiveSharpening: 0
+--- !u!1 &330769268
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 330769270}
+  - component: {fileID: 330769269}
+  m_Layer: 0
+  m_Name: _RaptorBattleMidLevel(Clone)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &330769269
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 330769268}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23a678d27015ec145b8157f27106c3be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _isEnemyTypeRandom: 0
+  _minLevel: 2
+  _maxLevel: 4
+  _enemyCharacterStats:
+    traceID: 
+    _money: 20
+    _maxHealth: 100
+    _id: Raptor
+    _health: 200
+    _level: 2
+    _experience: 0
+--- !u!4 &330769270
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 330769268}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 20.608484, y: -7.79839, z: 26.378664}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &343269334
 GameObject:
   m_ObjectHideFlags: 0
@@ -3407,6 +3958,61 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 343269334}
   m_Mesh: {fileID: -7672157882097804489, guid: 474db57140759044f8177d9f0d98bb69, type: 3}
+--- !u!1 &363944040
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 363944042}
+  - component: {fileID: 363944041}
+  m_Layer: 0
+  m_Name: _RaptorBattleLowLev(Clone)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &363944041
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 363944040}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23a678d27015ec145b8157f27106c3be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _isEnemyTypeRandom: 1
+  _minLevel: 6
+  _maxLevel: 7
+  _enemyCharacterStats:
+    traceID: 
+    _money: 20
+    _maxHealth: 100
+    _id: Raptor
+    _health: 100
+    _level: 1
+    _experience: 0
+--- !u!4 &363944042
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 363944040}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 20.608484, y: -7.79839, z: 26.378664}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &384384317
 GameObject:
   m_ObjectHideFlags: 0
@@ -4345,6 +4951,61 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 543472168}
   m_Mesh: {fileID: -1860326608950814815, guid: 474db57140759044f8177d9f0d98bb69, type: 3}
+--- !u!1 &547341885
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 547341887}
+  - component: {fileID: 547341886}
+  m_Layer: 0
+  m_Name: _RaptorBattleMidLevel(Clone)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &547341886
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 547341885}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23a678d27015ec145b8157f27106c3be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _isEnemyTypeRandom: 0
+  _minLevel: 2
+  _maxLevel: 4
+  _enemyCharacterStats:
+    traceID: 
+    _money: 20
+    _maxHealth: 100
+    _id: Raptor
+    _health: 200
+    _level: 2
+    _experience: 0
+--- !u!4 &547341887
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 547341885}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 20.608484, y: -7.79839, z: 26.378664}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &547704707
 GameObject:
   m_ObjectHideFlags: 0
@@ -4428,6 +5089,61 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 547704707}
   m_Mesh: {fileID: -1860326608950814815, guid: 474db57140759044f8177d9f0d98bb69, type: 3}
+--- !u!1 &553619437
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 553619439}
+  - component: {fileID: 553619438}
+  m_Layer: 0
+  m_Name: _RaptorBattleMidLevel(Clone)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &553619438
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 553619437}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23a678d27015ec145b8157f27106c3be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _isEnemyTypeRandom: 0
+  _minLevel: 2
+  _maxLevel: 4
+  _enemyCharacterStats:
+    traceID: 
+    _money: 20
+    _maxHealth: 100
+    _id: Raptor
+    _health: 200
+    _level: 2
+    _experience: 0
+--- !u!4 &553619439
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 553619437}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 20.608484, y: -7.79839, z: 26.378664}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &572272263
 GameObject:
   m_ObjectHideFlags: 0
@@ -4715,6 +5431,61 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 588791423}
   m_Mesh: {fileID: -1860326608950814815, guid: 474db57140759044f8177d9f0d98bb69, type: 3}
+--- !u!1 &597368573
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 597368575}
+  - component: {fileID: 597368574}
+  m_Layer: 0
+  m_Name: _RaptorBattleMidLevel(Clone)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &597368574
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 597368573}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23a678d27015ec145b8157f27106c3be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _isEnemyTypeRandom: 0
+  _minLevel: 2
+  _maxLevel: 4
+  _enemyCharacterStats:
+    traceID: 
+    _money: 20
+    _maxHealth: 100
+    _id: Raptor
+    _health: 200
+    _level: 2
+    _experience: 0
+--- !u!4 &597368575
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 597368573}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 20.608484, y: -7.79839, z: 26.378664}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &604130233
 GameObject:
   m_ObjectHideFlags: 0
@@ -5197,6 +5968,61 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 645308072}
   m_Mesh: {fileID: -5700080643567655694, guid: 474db57140759044f8177d9f0d98bb69, type: 3}
+--- !u!1 &648548569
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 648548571}
+  - component: {fileID: 648548570}
+  m_Layer: 0
+  m_Name: _RaptorBattleMidLevel(Clone)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &648548570
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 648548569}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23a678d27015ec145b8157f27106c3be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _isEnemyTypeRandom: 0
+  _minLevel: 2
+  _maxLevel: 4
+  _enemyCharacterStats:
+    traceID: 
+    _money: 20
+    _maxHealth: 100
+    _id: Raptor
+    _health: 200
+    _level: 2
+    _experience: 0
+--- !u!4 &648548571
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 648548569}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 20.608484, y: -7.79839, z: 26.378664}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &665479544
 GameObject:
   m_ObjectHideFlags: 0
@@ -5331,7 +6157,6 @@ MonoBehaviour:
   _currentState: 0
   _sfxDamage: {fileID: 8300000, guid: 3120e9089e2a3da49aa428afc0a98b6b, type: 3}
   _animator: {fileID: 1499296593}
-  _entityStats: {fileID: 684660589}
   _menusManager: {fileID: 1665558122}
   _onTakeDamage:
     m_PersistentCalls:
@@ -5565,6 +6390,116 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 712461146}
   m_CullTransparentMesh: 1
+--- !u!1 &714396588
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 714396590}
+  - component: {fileID: 714396589}
+  m_Layer: 0
+  m_Name: _RaptorBattleLowLev(Clone)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &714396589
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 714396588}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23a678d27015ec145b8157f27106c3be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _isEnemyTypeRandom: 1
+  _minLevel: 6
+  _maxLevel: 7
+  _enemyCharacterStats:
+    traceID: 
+    _money: 20
+    _maxHealth: 100
+    _id: Raptor
+    _health: 100
+    _level: 1
+    _experience: 0
+--- !u!4 &714396590
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 714396588}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 20.608484, y: -7.79839, z: 26.378664}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &724688401
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 724688403}
+  - component: {fileID: 724688402}
+  m_Layer: 0
+  m_Name: _RaptorBattleLowLev(Clone)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &724688402
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 724688401}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23a678d27015ec145b8157f27106c3be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _isEnemyTypeRandom: 1
+  _minLevel: 6
+  _maxLevel: 7
+  _enemyCharacterStats:
+    traceID: 
+    _money: 20
+    _maxHealth: 100
+    _id: Raptor
+    _health: 100
+    _level: 1
+    _experience: 0
+--- !u!4 &724688403
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 724688401}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 20.608484, y: -7.79839, z: 26.378664}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &726378288
 GameObject:
   m_ObjectHideFlags: 0
@@ -5686,6 +6621,61 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 726378288}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &727492674
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 727492676}
+  - component: {fileID: 727492675}
+  m_Layer: 0
+  m_Name: _RaptorBattleLowLev(Clone)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &727492675
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 727492674}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23a678d27015ec145b8157f27106c3be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _isEnemyTypeRandom: 1
+  _minLevel: 1
+  _maxLevel: 2
+  _enemyCharacterStats:
+    traceID: 
+    _money: 20
+    _maxHealth: 100
+    _id: Raptor
+    _health: 100
+    _level: 1
+    _experience: 0
+--- !u!4 &727492676
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 727492674}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 20.608484, y: -7.79839, z: 26.378664}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &728960265
 GameObject:
   m_ObjectHideFlags: 0
@@ -6879,8 +7869,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 755ccf3ddfba5c842a7a0cadf8f827d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _itemController: {fileID: 1056835196}
-  _itemGO: {fileID: 1056835195}
+  _itemController: {fileID: 0}
+  _itemGO: {fileID: 0}
 --- !u!1 &763200430
 GameObject:
   m_ObjectHideFlags: 0
@@ -7085,37 +8075,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _itemController: {fileID: 0}
   _itemGO: {fileID: 0}
---- !u!1 &781974247
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 781974248}
-  m_Layer: 0
-  m_Name: GameObject
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &781974248
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 781974247}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 20.608484, y: -7.79839, z: 26.378664}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &801420535
 GameObject:
   m_ObjectHideFlags: 0
@@ -7330,6 +8289,61 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 806148712}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &813766667
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 813766669}
+  - component: {fileID: 813766668}
+  m_Layer: 0
+  m_Name: _RaptorBattleLowLev(Clone)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &813766668
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 813766667}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23a678d27015ec145b8157f27106c3be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _isEnemyTypeRandom: 1
+  _minLevel: 6
+  _maxLevel: 7
+  _enemyCharacterStats:
+    traceID: 
+    _money: 20
+    _maxHealth: 100
+    _id: Raptor
+    _health: 100
+    _level: 1
+    _experience: 0
+--- !u!4 &813766669
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 813766667}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 20.608484, y: -7.79839, z: 26.378664}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &817769253
 GameObject:
   m_ObjectHideFlags: 0
@@ -7377,6 +8391,61 @@ Transform:
   m_Children:
   - {fileID: 330585546}
   m_Father: {fileID: 1517240241}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &819225275
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 819225277}
+  - component: {fileID: 819225276}
+  m_Layer: 0
+  m_Name: _RaptorBattleLowLev(Clone)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &819225276
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 819225275}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23a678d27015ec145b8157f27106c3be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _isEnemyTypeRandom: 1
+  _minLevel: 6
+  _maxLevel: 7
+  _enemyCharacterStats:
+    traceID: 
+    _money: 20
+    _maxHealth: 100
+    _id: Raptor
+    _health: 100
+    _level: 1
+    _experience: 0
+--- !u!4 &819225277
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 819225275}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 20.608484, y: -7.79839, z: 26.378664}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &822535963
 GameObject:
@@ -7822,6 +8891,61 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 843682994}
   m_CullTransparentMesh: 1
+--- !u!1 &856487317
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 856487319}
+  - component: {fileID: 856487318}
+  m_Layer: 0
+  m_Name: _RaptorBattleMidLevel(Clone)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &856487318
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 856487317}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23a678d27015ec145b8157f27106c3be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _isEnemyTypeRandom: 0
+  _minLevel: 2
+  _maxLevel: 4
+  _enemyCharacterStats:
+    traceID: 
+    _money: 20
+    _maxHealth: 100
+    _id: Raptor
+    _health: 200
+    _level: 2
+    _experience: 0
+--- !u!4 &856487319
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 856487317}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 20.608484, y: -7.79839, z: 26.378664}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &858164840
 GameObject:
   m_ObjectHideFlags: 0
@@ -7905,6 +9029,61 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 858164840}
   m_Mesh: {fileID: -1860326608950814815, guid: 474db57140759044f8177d9f0d98bb69, type: 3}
+--- !u!1 &859896619
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 859896621}
+  - component: {fileID: 859896620}
+  m_Layer: 0
+  m_Name: _RaptorBattleLowLev(Clone)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &859896620
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 859896619}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23a678d27015ec145b8157f27106c3be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _isEnemyTypeRandom: 1
+  _minLevel: 6
+  _maxLevel: 7
+  _enemyCharacterStats:
+    traceID: 
+    _money: 20
+    _maxHealth: 100
+    _id: Raptor
+    _health: 100
+    _level: 1
+    _experience: 0
+--- !u!4 &859896621
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 859896619}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 20.608484, y: -7.79839, z: 26.378664}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &876346827
 GameObject:
   m_ObjectHideFlags: 0
@@ -7992,6 +9171,61 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 876346827}
   m_Mesh: {fileID: -1860326608950814815, guid: 474db57140759044f8177d9f0d98bb69, type: 3}
+--- !u!1 &888896915
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 888896917}
+  - component: {fileID: 888896916}
+  m_Layer: 0
+  m_Name: _RaptorBattleMidLevel(Clone)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &888896916
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 888896915}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23a678d27015ec145b8157f27106c3be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _isEnemyTypeRandom: 0
+  _minLevel: 2
+  _maxLevel: 4
+  _enemyCharacterStats:
+    traceID: 
+    _money: 20
+    _maxHealth: 100
+    _id: Raptor
+    _health: 200
+    _level: 2
+    _experience: 0
+--- !u!4 &888896917
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 888896915}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 20.608484, y: -7.79839, z: 26.378664}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &941162807
 GameObject:
   m_ObjectHideFlags: 0
@@ -8037,6 +9271,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _overworldMenusManager: {fileID: 1665558122}
+  _playerStats: []
 --- !u!1 &950679880
 GameObject:
   m_ObjectHideFlags: 0
@@ -8577,6 +9812,116 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1899009406}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1037818210
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1037818212}
+  - component: {fileID: 1037818211}
+  m_Layer: 0
+  m_Name: _RaptorBattleLowLev(Clone)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1037818211
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1037818210}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23a678d27015ec145b8157f27106c3be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _isEnemyTypeRandom: 1
+  _minLevel: 1
+  _maxLevel: 2
+  _enemyCharacterStats:
+    traceID: 
+    _money: 20
+    _maxHealth: 100
+    _id: Raptor
+    _health: 100
+    _level: 1
+    _experience: 0
+--- !u!4 &1037818212
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1037818210}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 20.608484, y: -7.79839, z: 26.378664}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1041048281
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1041048283}
+  - component: {fileID: 1041048282}
+  m_Layer: 0
+  m_Name: _RaptorBattleMidLevel(Clone)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1041048282
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1041048281}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23a678d27015ec145b8157f27106c3be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _isEnemyTypeRandom: 0
+  _minLevel: 2
+  _maxLevel: 4
+  _enemyCharacterStats:
+    traceID: 
+    _money: 20
+    _maxHealth: 100
+    _id: Raptor
+    _health: 200
+    _level: 2
+    _experience: 0
+--- !u!4 &1041048283
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1041048281}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 20.608484, y: -7.79839, z: 26.378664}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1046313755
 GameObject:
   m_ObjectHideFlags: 0
@@ -8745,24 +10090,6 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
---- !u!1 &1056835195 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1884879836041257083, guid: c657c119f5ff7444c887802be05197fb,
-    type: 3}
-  m_PrefabInstance: {fileID: 6780632998323472470}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1056835196 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4685092024120156469, guid: c657c119f5ff7444c887802be05197fb,
-    type: 3}
-  m_PrefabInstance: {fileID: 6780632998323472470}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1056835195}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3bd8c66a718c1e9409192898ca044f2d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1072529975
 GameObject:
   m_ObjectHideFlags: 0
@@ -9002,6 +10329,116 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1083063036}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1097158533
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1097158535}
+  - component: {fileID: 1097158534}
+  m_Layer: 0
+  m_Name: _RaptorBattleMidLevel(Clone)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1097158534
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1097158533}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23a678d27015ec145b8157f27106c3be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _isEnemyTypeRandom: 0
+  _minLevel: 2
+  _maxLevel: 4
+  _enemyCharacterStats:
+    traceID: 
+    _money: 20
+    _maxHealth: 100
+    _id: Raptor
+    _health: 200
+    _level: 2
+    _experience: 0
+--- !u!4 &1097158535
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1097158533}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 20.608484, y: -7.79839, z: 26.378664}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1107337836
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1107337838}
+  - component: {fileID: 1107337837}
+  m_Layer: 0
+  m_Name: _RaptorBattleMidLevel(Clone)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1107337837
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1107337836}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23a678d27015ec145b8157f27106c3be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _isEnemyTypeRandom: 0
+  _minLevel: 2
+  _maxLevel: 4
+  _enemyCharacterStats:
+    traceID: 
+    _money: 20
+    _maxHealth: 100
+    _id: Raptor
+    _health: 200
+    _level: 2
+    _experience: 0
+--- !u!4 &1107337838
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1107337836}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 20.608484, y: -7.79839, z: 26.378664}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1154450755
 GameObject:
   m_ObjectHideFlags: 0
@@ -9157,6 +10594,61 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1154450755}
   m_CullTransparentMesh: 1
+--- !u!1 &1183775607
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1183775609}
+  - component: {fileID: 1183775608}
+  m_Layer: 0
+  m_Name: _RaptorBattleMidLevel(Clone)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1183775608
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1183775607}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23a678d27015ec145b8157f27106c3be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _isEnemyTypeRandom: 0
+  _minLevel: 2
+  _maxLevel: 4
+  _enemyCharacterStats:
+    traceID: 
+    _money: 20
+    _maxHealth: 100
+    _id: Raptor
+    _health: 200
+    _level: 2
+    _experience: 0
+--- !u!4 &1183775609
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1183775607}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 20.608484, y: -7.79839, z: 26.378664}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1189606578
 GameObject:
   m_ObjectHideFlags: 0
@@ -9494,6 +10986,162 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _itemController: {fileID: 0}
   _itemGO: {fileID: 0}
+--- !u!1 &1197107318
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1197107320}
+  - component: {fileID: 1197107319}
+  m_Layer: 0
+  m_Name: _RaptorBattleLowLev(Clone)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1197107319
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1197107318}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23a678d27015ec145b8157f27106c3be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _isEnemyTypeRandom: 1
+  _minLevel: 6
+  _maxLevel: 7
+  _enemyCharacterStats:
+    traceID: 
+    _money: 20
+    _maxHealth: 100
+    _id: Raptor
+    _health: 100
+    _level: 1
+    _experience: 0
+--- !u!4 &1197107320
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1197107318}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 20.608484, y: -7.79839, z: 26.378664}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1219454082
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1219454084}
+  - component: {fileID: 1219454083}
+  m_Layer: 0
+  m_Name: _AddTurnsLow(Clone)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1219454083
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1219454082}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 27e975dd7ccc89d4fa83d0b6f79fc738, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _min: 1
+  _max: 2
+--- !u!4 &1219454084
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1219454082}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 20.608484, y: -7.79839, z: 26.378664}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1231127499
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1231127501}
+  - component: {fileID: 1231127500}
+  m_Layer: 0
+  m_Name: _RaptorBattleLowLev(Clone)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1231127500
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1231127499}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23a678d27015ec145b8157f27106c3be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _isEnemyTypeRandom: 1
+  _minLevel: 6
+  _maxLevel: 7
+  _enemyCharacterStats:
+    traceID: 
+    _money: 20
+    _maxHealth: 100
+    _id: Raptor
+    _health: 100
+    _level: 1
+    _experience: 0
+--- !u!4 &1231127501
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1231127499}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 20.608484, y: -7.79839, z: 26.378664}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1246394541
 GameObject:
   m_ObjectHideFlags: 0
@@ -9838,6 +11486,61 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1263339519}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1269452665
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1269452667}
+  - component: {fileID: 1269452666}
+  m_Layer: 0
+  m_Name: _RaptorBattleMidLevel(Clone)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1269452666
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1269452665}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23a678d27015ec145b8157f27106c3be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _isEnemyTypeRandom: 0
+  _minLevel: 2
+  _maxLevel: 4
+  _enemyCharacterStats:
+    traceID: 
+    _money: 20
+    _maxHealth: 100
+    _id: Raptor
+    _health: 200
+    _level: 2
+    _experience: 0
+--- !u!4 &1269452667
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1269452665}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 20.608484, y: -7.79839, z: 26.378664}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1274618744
 GameObject:
   m_ObjectHideFlags: 0
@@ -9944,6 +11647,54 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1274618744}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1293174753
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1293174755}
+  - component: {fileID: 1293174754}
+  m_Layer: 0
+  m_Name: _GOGiveHealthLow(Clone)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1293174754
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1293174753}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ec0cced170368d4fb8f886b124be15a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _healthToGive: 1
+  _isHealthRandom: 1
+  _min: 5
+  _max: 20
+--- !u!4 &1293174755
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1293174753}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 20.608484, y: -7.79839, z: 26.378664}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1305016840
 GameObject:
   m_ObjectHideFlags: 0
@@ -10277,6 +12028,61 @@ Transform:
   - {fileID: 822535967}
   - {fileID: 1592671898}
   m_Father: {fileID: 2090875619}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1338842065
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1338842067}
+  - component: {fileID: 1338842066}
+  m_Layer: 0
+  m_Name: _RaptorBattleMidLevel(Clone)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1338842066
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1338842065}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23a678d27015ec145b8157f27106c3be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _isEnemyTypeRandom: 0
+  _minLevel: 2
+  _maxLevel: 4
+  _enemyCharacterStats:
+    traceID: 
+    _money: 20
+    _maxHealth: 100
+    _id: Raptor
+    _health: 200
+    _level: 2
+    _experience: 0
+--- !u!4 &1338842067
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1338842065}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 20.608484, y: -7.79839, z: 26.378664}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1341437929
 GameObject:
@@ -10756,6 +12562,61 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _itemController: {fileID: 0}
   _itemGO: {fileID: 0}
+--- !u!1 &1371268564
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1371268566}
+  - component: {fileID: 1371268565}
+  m_Layer: 0
+  m_Name: _RaptorBattleMidLevel(Clone)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1371268565
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1371268564}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23a678d27015ec145b8157f27106c3be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _isEnemyTypeRandom: 0
+  _minLevel: 2
+  _maxLevel: 4
+  _enemyCharacterStats:
+    traceID: 
+    _money: 20
+    _maxHealth: 100
+    _id: Raptor
+    _health: 200
+    _level: 2
+    _experience: 0
+--- !u!4 &1371268566
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1371268564}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 20.608484, y: -7.79839, z: 26.378664}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1376463865
 GameObject:
   m_ObjectHideFlags: 0
@@ -11006,6 +12867,61 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!1 &1386771553
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1386771555}
+  - component: {fileID: 1386771554}
+  m_Layer: 0
+  m_Name: _RaptorBattleLowLev(Clone)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1386771554
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1386771553}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23a678d27015ec145b8157f27106c3be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _isEnemyTypeRandom: 1
+  _minLevel: 1
+  _maxLevel: 2
+  _enemyCharacterStats:
+    traceID: 
+    _money: 20
+    _maxHealth: 100
+    _id: Raptor
+    _health: 100
+    _level: 1
+    _experience: 0
+--- !u!4 &1386771555
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1386771553}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 20.608484, y: -7.79839, z: 26.378664}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1388637278
 GameObject:
   m_ObjectHideFlags: 0
@@ -11130,16 +13046,73 @@ MonoBehaviour:
   m_GameObject: {fileID: 1396355864}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6e0bbb74ad019bc41b1cb8452079ef7f, type: 3}
+  m_Script: {fileID: 11500000, guid: f73bd70bfbc19d145a02291cd604e9b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _startingTransform: {fileID: 1274618745}
-  _startingSquares: 10
-  _spacing: 3
-  _squarePrefab: {fileID: 3686107893937218976, guid: 048574685cb2fdb49a759513537a0890,
-    type: 3}
-  _squareParent: {fileID: 781974247}
-  _boardItemFactory: {fileID: 1561655031}
+  _percentContainingItem: 40
+  _lowLevelItems:
+  - {fileID: 3808462847586187616, guid: 1163285b2157bc9408035889ea56c1a1, type: 3}
+  - {fileID: 1117735185011554968, guid: 20351e93ec6f3db46a4aca97d1cadd96, type: 3}
+  - {fileID: 6786730632574442822, guid: 3eb3911f43518574daab138eb6b6d2ff, type: 3}
+  _midLevelItems:
+  - {fileID: 3808462847586187616, guid: 1163285b2157bc9408035889ea56c1a1, type: 3}
+  _highLevelItems:
+  - {fileID: 3808462847586187616, guid: 1163285b2157bc9408035889ea56c1a1, type: 3}
+--- !u!1 &1400145074
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1400145076}
+  - component: {fileID: 1400145075}
+  m_Layer: 0
+  m_Name: _RaptorBattleMidLevel(Clone)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1400145075
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1400145074}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23a678d27015ec145b8157f27106c3be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _isEnemyTypeRandom: 0
+  _minLevel: 2
+  _maxLevel: 4
+  _enemyCharacterStats:
+    traceID: 
+    _money: 20
+    _maxHealth: 100
+    _id: Raptor
+    _health: 200
+    _level: 2
+    _experience: 0
+--- !u!4 &1400145076
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1400145074}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 20.608484, y: -7.79839, z: 26.378664}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1407081956
 GameObject:
   m_ObjectHideFlags: 0
@@ -11261,6 +13234,61 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _itemController: {fileID: 0}
   _itemGO: {fileID: 0}
+--- !u!1 &1407828531
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1407828533}
+  - component: {fileID: 1407828532}
+  m_Layer: 0
+  m_Name: _RaptorBattleLowLev(Clone)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1407828532
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1407828531}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23a678d27015ec145b8157f27106c3be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _isEnemyTypeRandom: 1
+  _minLevel: 6
+  _maxLevel: 7
+  _enemyCharacterStats:
+    traceID: 
+    _money: 20
+    _maxHealth: 100
+    _id: Raptor
+    _health: 100
+    _level: 1
+    _experience: 0
+--- !u!4 &1407828533
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1407828531}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 20.608484, y: -7.79839, z: 26.378664}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1415799528
 GameObject:
   m_ObjectHideFlags: 0
@@ -11523,6 +13551,61 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1418930471}
   m_CullTransparentMesh: 1
+--- !u!1 &1420042944
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1420042946}
+  - component: {fileID: 1420042945}
+  m_Layer: 0
+  m_Name: _RaptorBattleLowLev(Clone)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1420042945
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1420042944}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23a678d27015ec145b8157f27106c3be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _isEnemyTypeRandom: 1
+  _minLevel: 2
+  _maxLevel: 3
+  _enemyCharacterStats:
+    traceID: 
+    _money: 20
+    _maxHealth: 100
+    _id: Raptor
+    _health: 100
+    _level: 1
+    _experience: 0
+--- !u!4 &1420042946
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1420042944}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 20.608484, y: -7.79839, z: 26.378664}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1427537242
 GameObject:
   m_ObjectHideFlags: 0
@@ -11889,6 +13972,61 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1466523552}
   m_CullTransparentMesh: 1
+--- !u!1 &1480481477
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1480481479}
+  - component: {fileID: 1480481478}
+  m_Layer: 0
+  m_Name: _RaptorBattleMidLevel(Clone)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1480481478
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1480481477}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23a678d27015ec145b8157f27106c3be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _isEnemyTypeRandom: 0
+  _minLevel: 2
+  _maxLevel: 4
+  _enemyCharacterStats:
+    traceID: 
+    _money: 20
+    _maxHealth: 100
+    _id: Raptor
+    _health: 200
+    _level: 2
+    _experience: 0
+--- !u!4 &1480481479
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1480481477}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 20.608484, y: -7.79839, z: 26.378664}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1488831749
 GameObject:
   m_ObjectHideFlags: 0
@@ -12143,6 +14281,61 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 729366437}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1505194879
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1505194881}
+  - component: {fileID: 1505194880}
+  m_Layer: 0
+  m_Name: _RaptorBattleMidLevel(Clone)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1505194880
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1505194879}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23a678d27015ec145b8157f27106c3be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _isEnemyTypeRandom: 0
+  _minLevel: 2
+  _maxLevel: 4
+  _enemyCharacterStats:
+    traceID: 
+    _money: 20
+    _maxHealth: 100
+    _id: Raptor
+    _health: 200
+    _level: 2
+    _experience: 0
+--- !u!4 &1505194881
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1505194879}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 20.608484, y: -7.79839, z: 26.378664}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1517240240
 GameObject:
   m_ObjectHideFlags: 0
@@ -12319,6 +14512,116 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1541248759}
   m_Mesh: {fileID: -1860326608950814815, guid: 474db57140759044f8177d9f0d98bb69, type: 3}
+--- !u!1 &1551634125
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1551634127}
+  - component: {fileID: 1551634126}
+  m_Layer: 0
+  m_Name: _RaptorBattleLowLev(Clone)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1551634126
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1551634125}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23a678d27015ec145b8157f27106c3be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _isEnemyTypeRandom: 1
+  _minLevel: 6
+  _maxLevel: 7
+  _enemyCharacterStats:
+    traceID: 
+    _money: 20
+    _maxHealth: 100
+    _id: Raptor
+    _health: 100
+    _level: 1
+    _experience: 0
+--- !u!4 &1551634127
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1551634125}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 20.608484, y: -7.79839, z: 26.378664}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1557782161
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1557782163}
+  - component: {fileID: 1557782162}
+  m_Layer: 0
+  m_Name: _RaptorBattleLowLev(Clone)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1557782162
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1557782161}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23a678d27015ec145b8157f27106c3be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _isEnemyTypeRandom: 1
+  _minLevel: 6
+  _maxLevel: 7
+  _enemyCharacterStats:
+    traceID: 
+    _money: 20
+    _maxHealth: 100
+    _id: Raptor
+    _health: 100
+    _level: 1
+    _experience: 0
+--- !u!4 &1557782163
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1557782161}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 20.608484, y: -7.79839, z: 26.378664}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1561655029
 GameObject:
   m_ObjectHideFlags: 0
@@ -12372,6 +14675,61 @@ MonoBehaviour:
   _moveBackTemplate: {fileID: 2279356691705229602, guid: 9c210e301c86b0a45bb12980869ef25b,
     type: 3}
   _vfxPrefab: {fileID: 0}
+--- !u!1 &1571662864
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1571662866}
+  - component: {fileID: 1571662865}
+  m_Layer: 0
+  m_Name: _RaptorBattleLowLev(Clone)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1571662865
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1571662864}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23a678d27015ec145b8157f27106c3be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _isEnemyTypeRandom: 1
+  _minLevel: 6
+  _maxLevel: 7
+  _enemyCharacterStats:
+    traceID: 
+    _money: 20
+    _maxHealth: 100
+    _id: Raptor
+    _health: 100
+    _level: 1
+    _experience: 0
+--- !u!4 &1571662866
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1571662864}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 20.608484, y: -7.79839, z: 26.378664}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1572448236
 GameObject:
   m_ObjectHideFlags: 0
@@ -13041,6 +15399,116 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1899009406}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1647451210
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1647451212}
+  - component: {fileID: 1647451211}
+  m_Layer: 0
+  m_Name: _RaptorBattleMidLevel(Clone)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1647451211
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1647451210}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23a678d27015ec145b8157f27106c3be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _isEnemyTypeRandom: 0
+  _minLevel: 2
+  _maxLevel: 4
+  _enemyCharacterStats:
+    traceID: 
+    _money: 20
+    _maxHealth: 100
+    _id: Raptor
+    _health: 200
+    _level: 2
+    _experience: 0
+--- !u!4 &1647451212
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1647451210}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 20.608484, y: -7.79839, z: 26.378664}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1659762464
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1659762466}
+  - component: {fileID: 1659762465}
+  m_Layer: 0
+  m_Name: _RaptorBattleMidLevel(Clone)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1659762465
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1659762464}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23a678d27015ec145b8157f27106c3be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _isEnemyTypeRandom: 0
+  _minLevel: 2
+  _maxLevel: 4
+  _enemyCharacterStats:
+    traceID: 
+    _money: 20
+    _maxHealth: 100
+    _id: Raptor
+    _health: 200
+    _level: 2
+    _experience: 0
+--- !u!4 &1659762466
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1659762464}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 20.608484, y: -7.79839, z: 26.378664}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1661288550
 GameObject:
   m_ObjectHideFlags: 0
@@ -13258,6 +15726,61 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1668530762}
   m_Mesh: {fileID: -1860326608950814815, guid: 474db57140759044f8177d9f0d98bb69, type: 3}
+--- !u!1 &1679894008
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1679894010}
+  - component: {fileID: 1679894009}
+  m_Layer: 0
+  m_Name: _RaptorBattleMidLevel(Clone)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1679894009
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1679894008}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23a678d27015ec145b8157f27106c3be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _isEnemyTypeRandom: 0
+  _minLevel: 2
+  _maxLevel: 4
+  _enemyCharacterStats:
+    traceID: 
+    _money: 20
+    _maxHealth: 100
+    _id: Raptor
+    _health: 200
+    _level: 2
+    _experience: 0
+--- !u!4 &1679894010
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1679894008}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 20.608484, y: -7.79839, z: 26.378664}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1683793197 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 2ed5daf031761a24d8d740c0f7f639ad,
@@ -13270,6 +15793,61 @@ Animator:
     type: 3}
   m_PrefabInstance: {fileID: 259678344}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1689879033
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1689879035}
+  - component: {fileID: 1689879034}
+  m_Layer: 0
+  m_Name: _RaptorBattleMidLevel(Clone)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1689879034
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1689879033}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23a678d27015ec145b8157f27106c3be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _isEnemyTypeRandom: 0
+  _minLevel: 2
+  _maxLevel: 4
+  _enemyCharacterStats:
+    traceID: 
+    _money: 20
+    _maxHealth: 100
+    _id: Raptor
+    _health: 200
+    _level: 2
+    _experience: 0
+--- !u!4 &1689879035
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1689879033}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 20.608484, y: -7.79839, z: 26.378664}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1691687776
 GameObject:
   m_ObjectHideFlags: 0
@@ -13506,7 +16084,6 @@ MonoBehaviour:
   _currentState: 0
   _sfxDamage: {fileID: 8300000, guid: 3120e9089e2a3da49aa428afc0a98b6b, type: 3}
   _animator: {fileID: 1683793198}
-  _entityStats: {fileID: 1701345046}
   _menusManager: {fileID: 1665558122}
   _onTakeDamage:
     m_PersistentCalls:
@@ -14130,24 +16707,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1747740990}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!1 &1748741873 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2279356691705229602, guid: 9c210e301c86b0a45bb12980869ef25b,
-    type: 3}
-  m_PrefabInstance: {fileID: 5486278602557093794}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1748741874 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3811407898674749044, guid: 9c210e301c86b0a45bb12980869ef25b,
-    type: 3}
-  m_PrefabInstance: {fileID: 5486278602557093794}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1748741873}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3bd8c66a718c1e9409192898ca044f2d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1782626803
 GameObject:
   m_ObjectHideFlags: 0
@@ -14378,6 +16937,116 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1820810392}
   m_CullTransparentMesh: 1
+--- !u!1 &1831150135
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1831150137}
+  - component: {fileID: 1831150136}
+  m_Layer: 0
+  m_Name: _RaptorBattleMidLevel(Clone)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1831150136
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1831150135}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23a678d27015ec145b8157f27106c3be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _isEnemyTypeRandom: 0
+  _minLevel: 2
+  _maxLevel: 4
+  _enemyCharacterStats:
+    traceID: 
+    _money: 20
+    _maxHealth: 100
+    _id: Raptor
+    _health: 200
+    _level: 2
+    _experience: 0
+--- !u!4 &1831150137
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1831150135}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 20.608484, y: -7.79839, z: 26.378664}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1831674303
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1831674305}
+  - component: {fileID: 1831674304}
+  m_Layer: 0
+  m_Name: _RaptorBattleMidLevel(Clone)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1831674304
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1831674303}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23a678d27015ec145b8157f27106c3be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _isEnemyTypeRandom: 0
+  _minLevel: 2
+  _maxLevel: 4
+  _enemyCharacterStats:
+    traceID: 
+    _money: 20
+    _maxHealth: 100
+    _id: Raptor
+    _health: 200
+    _level: 2
+    _experience: 0
+--- !u!4 &1831674305
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1831674303}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 20.608484, y: -7.79839, z: 26.378664}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1836923405
 GameObject:
   m_ObjectHideFlags: 0
@@ -14649,6 +17318,61 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1848498582}
   m_CullTransparentMesh: 1
+--- !u!1 &1872031208
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1872031210}
+  - component: {fileID: 1872031209}
+  m_Layer: 0
+  m_Name: _RaptorBattleMidLevel(Clone)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1872031209
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1872031208}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23a678d27015ec145b8157f27106c3be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _isEnemyTypeRandom: 0
+  _minLevel: 2
+  _maxLevel: 4
+  _enemyCharacterStats:
+    traceID: 
+    _money: 20
+    _maxHealth: 100
+    _id: Raptor
+    _health: 200
+    _level: 2
+    _experience: 0
+--- !u!4 &1872031210
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1872031208}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 20.608484, y: -7.79839, z: 26.378664}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1874090016
 GameObject:
   m_ObjectHideFlags: 0
@@ -14821,6 +17545,61 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1887260030}
   m_Mesh: {fileID: -1860326608950814815, guid: 474db57140759044f8177d9f0d98bb69, type: 3}
+--- !u!1 &1889997229
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1889997231}
+  - component: {fileID: 1889997230}
+  m_Layer: 0
+  m_Name: _RaptorBattleMidLevel(Clone)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1889997230
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1889997229}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23a678d27015ec145b8157f27106c3be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _isEnemyTypeRandom: 0
+  _minLevel: 2
+  _maxLevel: 4
+  _enemyCharacterStats:
+    traceID: 
+    _money: 20
+    _maxHealth: 100
+    _id: Raptor
+    _health: 200
+    _level: 2
+    _experience: 0
+--- !u!4 &1889997231
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1889997229}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 20.608484, y: -7.79839, z: 26.378664}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1890554112
 GameObject:
   m_ObjectHideFlags: 0
@@ -15141,6 +17920,61 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1909781590}
   m_CullTransparentMesh: 1
+--- !u!1 &1947184771
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1947184773}
+  - component: {fileID: 1947184772}
+  m_Layer: 0
+  m_Name: _RaptorBattleMidLevel(Clone)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1947184772
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1947184771}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23a678d27015ec145b8157f27106c3be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _isEnemyTypeRandom: 0
+  _minLevel: 2
+  _maxLevel: 4
+  _enemyCharacterStats:
+    traceID: 
+    _money: 20
+    _maxHealth: 100
+    _id: Raptor
+    _health: 200
+    _level: 2
+    _experience: 0
+--- !u!4 &1947184773
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1947184771}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 20.608484, y: -7.79839, z: 26.378664}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1949332977
 GameObject:
   m_ObjectHideFlags: 0
@@ -15246,6 +18080,61 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1949332977}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1953230950
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1953230952}
+  - component: {fileID: 1953230951}
+  m_Layer: 0
+  m_Name: _RaptorBattleMidLevel(Clone)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1953230951
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1953230950}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23a678d27015ec145b8157f27106c3be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _isEnemyTypeRandom: 0
+  _minLevel: 2
+  _maxLevel: 4
+  _enemyCharacterStats:
+    traceID: 
+    _money: 20
+    _maxHealth: 100
+    _id: Raptor
+    _health: 200
+    _level: 2
+    _experience: 0
+--- !u!4 &1953230952
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1953230950}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 20.608484, y: -7.79839, z: 26.378664}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1964700497
 GameObject:
   m_ObjectHideFlags: 0
@@ -15872,6 +18761,61 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _itemController: {fileID: 0}
   _itemGO: {fileID: 0}
+--- !u!1 &2023037655
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2023037657}
+  - component: {fileID: 2023037656}
+  m_Layer: 0
+  m_Name: _RaptorBattleLowLev(Clone)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &2023037656
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2023037655}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23a678d27015ec145b8157f27106c3be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _isEnemyTypeRandom: 1
+  _minLevel: 6
+  _maxLevel: 7
+  _enemyCharacterStats:
+    traceID: 
+    _money: 20
+    _maxHealth: 100
+    _id: Raptor
+    _health: 100
+    _level: 1
+    _experience: 0
+--- !u!4 &2023037657
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2023037655}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 20.608484, y: -7.79839, z: 26.378664}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2038396582
 GameObject:
   m_ObjectHideFlags: 0
@@ -16189,24 +19133,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2045882457}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!1 &2049583160 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8026105563468951232, guid: 665f76a17cc74194bbbe480a3151e4a9,
-    type: 3}
-  m_PrefabInstance: {fileID: 2069355682216847830}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &2049583165 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8036505080300564270, guid: 665f76a17cc74194bbbe480a3151e4a9,
-    type: 3}
-  m_PrefabInstance: {fileID: 2069355682216847830}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2049583160}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3bd8c66a718c1e9409192898ca044f2d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &2056791120
 GameObject:
   m_ObjectHideFlags: 0
@@ -16717,7 +19643,7 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2112582811}
   m_Mesh: {fileID: -1860326608950814815, guid: 474db57140759044f8177d9f0d98bb69, type: 3}
---- !u!1001 &2069355682216847830
+--- !u!1001 &862089141640524388
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -16725,76 +19651,139 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 4787213295795617442, guid: 665f76a17cc74194bbbe480a3151e4a9,
+    - target: {fileID: 4808350159074110313, guid: 17970cc6dff447b4292c09a299d0da78,
+        type: 3}
+      propertyPath: m_Name
+      value: GO_BoardItemEnterBattleMidLevel
+      objectReference: {fileID: 0}
+    - target: {fileID: 5659078906623421103, guid: 17970cc6dff447b4292c09a299d0da78,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 57.285
+      value: 55.85
       objectReference: {fileID: 0}
-    - target: {fileID: 4787213295795617442, guid: 665f76a17cc74194bbbe480a3151e4a9,
+    - target: {fileID: 5659078906623421103, guid: 17970cc6dff447b4292c09a299d0da78,
         type: 3}
       propertyPath: m_LocalPosition.y
       value: 0.5830002
       objectReference: {fileID: 0}
-    - target: {fileID: 4787213295795617442, guid: 665f76a17cc74194bbbe480a3151e4a9,
+    - target: {fileID: 5659078906623421103, guid: 17970cc6dff447b4292c09a299d0da78,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 63.632
+      value: 65.705
       objectReference: {fileID: 0}
-    - target: {fileID: 4787213295795617442, guid: 665f76a17cc74194bbbe480a3151e4a9,
+    - target: {fileID: 5659078906623421103, guid: 17970cc6dff447b4292c09a299d0da78,
         type: 3}
       propertyPath: m_LocalRotation.w
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 4787213295795617442, guid: 665f76a17cc74194bbbe480a3151e4a9,
+    - target: {fileID: 5659078906623421103, guid: 17970cc6dff447b4292c09a299d0da78,
         type: 3}
       propertyPath: m_LocalRotation.x
       value: -0
       objectReference: {fileID: 0}
-    - target: {fileID: 4787213295795617442, guid: 665f76a17cc74194bbbe480a3151e4a9,
+    - target: {fileID: 5659078906623421103, guid: 17970cc6dff447b4292c09a299d0da78,
         type: 3}
       propertyPath: m_LocalRotation.y
       value: -0
       objectReference: {fileID: 0}
-    - target: {fileID: 4787213295795617442, guid: 665f76a17cc74194bbbe480a3151e4a9,
+    - target: {fileID: 5659078906623421103, guid: 17970cc6dff447b4292c09a299d0da78,
         type: 3}
       propertyPath: m_LocalRotation.z
       value: -0
       objectReference: {fileID: 0}
-    - target: {fileID: 4787213295795617442, guid: 665f76a17cc74194bbbe480a3151e4a9,
+    - target: {fileID: 5659078906623421103, guid: 17970cc6dff447b4292c09a299d0da78,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4787213295795617442, guid: 665f76a17cc74194bbbe480a3151e4a9,
+    - target: {fileID: 5659078906623421103, guid: 17970cc6dff447b4292c09a299d0da78,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4787213295795617442, guid: 665f76a17cc74194bbbe480a3151e4a9,
+    - target: {fileID: 5659078906623421103, guid: 17970cc6dff447b4292c09a299d0da78,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8026105563468951232, guid: 665f76a17cc74194bbbe480a3151e4a9,
+    - target: {fileID: 7719086669467736636, guid: 17970cc6dff447b4292c09a299d0da78,
         type: 3}
-      propertyPath: m_Name
-      value: GO_BoardItemGiveHealth
-      objectReference: {fileID: 0}
-    - target: {fileID: 8026105563468951232, guid: 665f76a17cc74194bbbe480a3151e4a9,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8036505080300564270, guid: 665f76a17cc74194bbbe480a3151e4a9,
-        type: 3}
-      propertyPath: _boardElement._boardManager
+      propertyPath: _animator
       value: 
-      objectReference: {fileID: 2655160}
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 665f76a17cc74194bbbe480a3151e4a9, type: 3}
+  m_SourcePrefab: {fileID: 100100000, guid: 17970cc6dff447b4292c09a299d0da78, type: 3}
+--- !u!1001 &1228141476874243920
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 600089912665916685, guid: 72ea599064dc8c34eb1e02cbaf7e1fbc,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 20.608484
+      objectReference: {fileID: 0}
+    - target: {fileID: 600089912665916685, guid: 72ea599064dc8c34eb1e02cbaf7e1fbc,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -7.79839
+      objectReference: {fileID: 0}
+    - target: {fileID: 600089912665916685, guid: 72ea599064dc8c34eb1e02cbaf7e1fbc,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 26.378664
+      objectReference: {fileID: 0}
+    - target: {fileID: 600089912665916685, guid: 72ea599064dc8c34eb1e02cbaf7e1fbc,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 600089912665916685, guid: 72ea599064dc8c34eb1e02cbaf7e1fbc,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 600089912665916685, guid: 72ea599064dc8c34eb1e02cbaf7e1fbc,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 600089912665916685, guid: 72ea599064dc8c34eb1e02cbaf7e1fbc,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 600089912665916685, guid: 72ea599064dc8c34eb1e02cbaf7e1fbc,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 600089912665916685, guid: 72ea599064dc8c34eb1e02cbaf7e1fbc,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 600089912665916685, guid: 72ea599064dc8c34eb1e02cbaf7e1fbc,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7847548035687087296, guid: 72ea599064dc8c34eb1e02cbaf7e1fbc,
+        type: 3}
+      propertyPath: m_Name
+      value: GameObject
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 72ea599064dc8c34eb1e02cbaf7e1fbc, type: 3}
 --- !u!1 &2765430607072948774
 GameObject:
   m_ObjectHideFlags: 0
@@ -16826,7 +19815,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1001 &5486278602557093794
+--- !u!1001 &7044558805121506709
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -16834,72 +19823,62 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2279356691705229602, guid: 9c210e301c86b0a45bb12980869ef25b,
+    - target: {fileID: 396634264699482869, guid: 227026e2d9c76444388aa7264a045857,
         type: 3}
       propertyPath: m_Name
-      value: GO_BoardMoveBack
+      value: GO_BoardItemEnterBattleHighLevel
       objectReference: {fileID: 0}
-    - target: {fileID: 2279356691705229602, guid: 9c210e301c86b0a45bb12980869ef25b,
+    - target: {fileID: 935954236526655730, guid: 227026e2d9c76444388aa7264a045857,
         type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3811407898674749044, guid: 9c210e301c86b0a45bb12980869ef25b,
-        type: 3}
-      propertyPath: _boardElement.modifier
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 3811407898674749044, guid: 9c210e301c86b0a45bb12980869ef25b,
-        type: 3}
-      propertyPath: _boardElement._boardManager
+      propertyPath: _animator
       value: 
-      objectReference: {fileID: 2655160}
-    - target: {fileID: 8134364468118321211, guid: 9c210e301c86b0a45bb12980869ef25b,
+      objectReference: {fileID: 0}
+    - target: {fileID: 6842831181724930634, guid: 227026e2d9c76444388aa7264a045857,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 57.285
+      value: 56.454
       objectReference: {fileID: 0}
-    - target: {fileID: 8134364468118321211, guid: 9c210e301c86b0a45bb12980869ef25b,
+    - target: {fileID: 6842831181724930634, guid: 227026e2d9c76444388aa7264a045857,
         type: 3}
       propertyPath: m_LocalPosition.y
       value: 0.5830002
       objectReference: {fileID: 0}
-    - target: {fileID: 8134364468118321211, guid: 9c210e301c86b0a45bb12980869ef25b,
+    - target: {fileID: 6842831181724930634, guid: 227026e2d9c76444388aa7264a045857,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 66.801
+      value: 65.705
       objectReference: {fileID: 0}
-    - target: {fileID: 8134364468118321211, guid: 9c210e301c86b0a45bb12980869ef25b,
+    - target: {fileID: 6842831181724930634, guid: 227026e2d9c76444388aa7264a045857,
         type: 3}
       propertyPath: m_LocalRotation.w
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 8134364468118321211, guid: 9c210e301c86b0a45bb12980869ef25b,
+    - target: {fileID: 6842831181724930634, guid: 227026e2d9c76444388aa7264a045857,
         type: 3}
       propertyPath: m_LocalRotation.x
       value: -0
       objectReference: {fileID: 0}
-    - target: {fileID: 8134364468118321211, guid: 9c210e301c86b0a45bb12980869ef25b,
+    - target: {fileID: 6842831181724930634, guid: 227026e2d9c76444388aa7264a045857,
         type: 3}
       propertyPath: m_LocalRotation.y
       value: -0
       objectReference: {fileID: 0}
-    - target: {fileID: 8134364468118321211, guid: 9c210e301c86b0a45bb12980869ef25b,
+    - target: {fileID: 6842831181724930634, guid: 227026e2d9c76444388aa7264a045857,
         type: 3}
       propertyPath: m_LocalRotation.z
       value: -0
       objectReference: {fileID: 0}
-    - target: {fileID: 8134364468118321211, guid: 9c210e301c86b0a45bb12980869ef25b,
+    - target: {fileID: 6842831181724930634, guid: 227026e2d9c76444388aa7264a045857,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8134364468118321211, guid: 9c210e301c86b0a45bb12980869ef25b,
+    - target: {fileID: 6842831181724930634, guid: 227026e2d9c76444388aa7264a045857,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8134364468118321211, guid: 9c210e301c86b0a45bb12980869ef25b,
+    - target: {fileID: 6842831181724930634, guid: 227026e2d9c76444388aa7264a045857,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
@@ -16908,85 +19887,7 @@ PrefabInstance:
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 9c210e301c86b0a45bb12980869ef25b, type: 3}
---- !u!1001 &6780632998323472470
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 1884879836041257083, guid: c657c119f5ff7444c887802be05197fb,
-        type: 3}
-      propertyPath: m_Name
-      value: GO_AddTurns
-      objectReference: {fileID: 0}
-    - target: {fileID: 1884879836041257083, guid: c657c119f5ff7444c887802be05197fb,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4685092024120156469, guid: c657c119f5ff7444c887802be05197fb,
-        type: 3}
-      propertyPath: _boardElement._boardManager
-      value: 
-      objectReference: {fileID: 2655160}
-    - target: {fileID: 8984109162584907285, guid: c657c119f5ff7444c887802be05197fb,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 57.285
-      objectReference: {fileID: 0}
-    - target: {fileID: 8984109162584907285, guid: c657c119f5ff7444c887802be05197fb,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.5830002
-      objectReference: {fileID: 0}
-    - target: {fileID: 8984109162584907285, guid: c657c119f5ff7444c887802be05197fb,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 69.44
-      objectReference: {fileID: 0}
-    - target: {fileID: 8984109162584907285, guid: c657c119f5ff7444c887802be05197fb,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8984109162584907285, guid: c657c119f5ff7444c887802be05197fb,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8984109162584907285, guid: c657c119f5ff7444c887802be05197fb,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8984109162584907285, guid: c657c119f5ff7444c887802be05197fb,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8984109162584907285, guid: c657c119f5ff7444c887802be05197fb,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8984109162584907285, guid: c657c119f5ff7444c887802be05197fb,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8984109162584907285, guid: c657c119f5ff7444c887802be05197fb,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: c657c119f5ff7444c887802be05197fb, type: 3}
+  m_SourcePrefab: {fileID: 100100000, guid: 227026e2d9c76444388aa7264a045857, type: 3}
 --- !u!1001 &7605632829323881779
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -17055,10 +19956,85 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 24df2db35a0455641a9c737c985ad9be, type: 3}
+--- !u!1001 &7912108196456416229
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2651854769031449163, guid: 1163285b2157bc9408035889ea56c1a1,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 55.85
+      objectReference: {fileID: 0}
+    - target: {fileID: 2651854769031449163, guid: 1163285b2157bc9408035889ea56c1a1,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.5830002
+      objectReference: {fileID: 0}
+    - target: {fileID: 2651854769031449163, guid: 1163285b2157bc9408035889ea56c1a1,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 64.54
+      objectReference: {fileID: 0}
+    - target: {fileID: 2651854769031449163, guid: 1163285b2157bc9408035889ea56c1a1,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2651854769031449163, guid: 1163285b2157bc9408035889ea56c1a1,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2651854769031449163, guid: 1163285b2157bc9408035889ea56c1a1,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2651854769031449163, guid: 1163285b2157bc9408035889ea56c1a1,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2651854769031449163, guid: 1163285b2157bc9408035889ea56c1a1,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2651854769031449163, guid: 1163285b2157bc9408035889ea56c1a1,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2651854769031449163, guid: 1163285b2157bc9408035889ea56c1a1,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3808462847586187616, guid: 1163285b2157bc9408035889ea56c1a1,
+        type: 3}
+      propertyPath: m_Name
+      value: GO_BoardItemEnterBattleLowLevRaptor
+      objectReference: {fileID: 0}
+    - target: {fileID: 8816557383001044210, guid: 1163285b2157bc9408035889ea56c1a1,
+        type: 3}
+      propertyPath: _animator
+      value: 
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 1163285b2157bc9408035889ea56c1a1, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
+  - {fileID: 856487319}
+  - {fileID: 298154496}
   - {fileID: 941162808}
   - {fileID: 1899009406}
   - {fileID: 205178516}
@@ -17071,13 +20047,66 @@ SceneRoots:
   - {fileID: 1596041679}
   - {fileID: 728960266}
   - {fileID: 385872159}
-  - {fileID: 2069355682216847830}
-  - {fileID: 5486278602557093794}
-  - {fileID: 6780632998323472470}
+  - {fileID: 7912108196456416229}
+  - {fileID: 862089141640524388}
+  - {fileID: 7044558805121506709}
   - {fileID: 41439495}
   - {fileID: 1701345044}
   - {fileID: 684660594}
   - {fileID: 1274618745}
   - {fileID: 1531195809}
   - {fileID: 3254722440074569884}
-  - {fileID: 781974248}
+  - {fileID: 1228141476874243920}
+  - {fileID: 1659762466}
+  - {fileID: 1219454084}
+  - {fileID: 727492676}
+  - {fileID: 1293174755}
+  - {fileID: 1480481479}
+  - {fileID: 1037818212}
+  - {fileID: 648548571}
+  - {fileID: 175372684}
+  - {fileID: 1269452667}
+  - {fileID: 1041048283}
+  - {fileID: 1386771555}
+  - {fileID: 240404996}
+  - {fileID: 192184166}
+  - {fileID: 1420042946}
+  - {fileID: 1107337838}
+  - {fileID: 1679894010}
+  - {fileID: 1551634127}
+  - {fileID: 724688403}
+  - {fileID: 1097158535}
+  - {fileID: 888896917}
+  - {fileID: 1197107320}
+  - {fileID: 1872031210}
+  - {fileID: 547341887}
+  - {fileID: 1231127501}
+  - {fileID: 1953230952}
+  - {fileID: 597368575}
+  - {fileID: 813766669}
+  - {fileID: 1505194881}
+  - {fileID: 198524296}
+  - {fileID: 859896621}
+  - {fileID: 1183775609}
+  - {fileID: 282924207}
+  - {fileID: 714396590}
+  - {fileID: 1371268566}
+  - {fileID: 1400145076}
+  - {fileID: 1407828533}
+  - {fileID: 1889997231}
+  - {fileID: 1689879035}
+  - {fileID: 1557782163}
+  - {fileID: 31690014}
+  - {fileID: 321249226}
+  - {fileID: 2023037657}
+  - {fileID: 1647451212}
+  - {fileID: 1947184773}
+  - {fileID: 1571662866}
+  - {fileID: 1831150137}
+  - {fileID: 553619439}
+  - {fileID: 363944042}
+  - {fileID: 1338842067}
+  - {fileID: 330769270}
+  - {fileID: 819225277}
+  - {fileID: 1831674305}
+  - {fileID: 245107481}

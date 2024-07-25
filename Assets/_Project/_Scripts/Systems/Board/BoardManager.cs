@@ -12,6 +12,7 @@ public enum BoardState
 
 public class BoardManager : MonoBehaviour
 {
+    [SerializeField] private SquareItemPopulator _squarePopulator;
 
     [SerializeField] private List<Transform> _squareTransforms;
     private List<Vector3> _squarePositions;
@@ -58,6 +59,8 @@ public class BoardManager : MonoBehaviour
             }
             _squareControllers.Add(squareController);
         }
+
+        _squarePopulator.Populate(_squareControllers);
 
         _pawns = new List<List<BoardPawn>>(_squarePositions.Count);
 

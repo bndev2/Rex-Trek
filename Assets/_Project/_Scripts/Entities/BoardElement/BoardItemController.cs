@@ -1,11 +1,43 @@
 using MyAssets;
 using System.Collections;
 using System.Collections.Generic;
+using System.ComponentModel;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class BoardItemController : MonoBehaviour
 {
-    [SerializeField] private BoardElement _boardElement;
+    [SerializeField] private GameObject _boardElementGo;
+
+    private void OnValidate()
+    {
+        if (_boardElementGo != null)
+        {
+            foreach (var comp in _boardElementGo.GetComponents<IBoardElement>())
+            {
+                _boardElement = comp.Clone();
+                break;
+            }
+        }
+    }
+
+
+    private void Awake()
+    {
+        if (_boardElementGo != null)
+        {
+            foreach (var comp in _boardElementGo.GetComponents<IBoardElement>())
+            {
+                _boardElement = comp.Clone();
+                break;
+            }
+        }
+    }
+
+
+
+
+    private IBoardElement _boardElement;
     [SerializeField] private GameObject _vfxApplyEffect;
     [SerializeField] AudioClip _sfxApplyEffect;
     [SerializeField] private Animator _animator;
@@ -42,7 +74,7 @@ public class BoardItemController : MonoBehaviour
 
     public void SetElement(BoardElement element)
     {
-        _boardElement = element;
+
     }
 
     private void Start()
