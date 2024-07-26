@@ -693,7 +693,10 @@ MonoBehaviour:
   _animator: {fileID: 6171184260778039454}
   _audioSource: {fileID: 6636319723216756411}
   _playerTurnStart: {fileID: 8300000, guid: d5900cb9d4e777944bfbd94186270859, type: 3}
-  _gun: {fileID: 4360004708905712684}
+  _guns:
+  - {fileID: 5126755011382340564}
+  - {fileID: 4360004708905712684}
+  _gun: {fileID: 5126755011382340564}
   _damageFlash: {fileID: 1545977036905010409}
   _sfxDamage: {fileID: 8300000, guid: 3120e9089e2a3da49aa428afc0a98b6b, type: 3}
 --- !u!114 &1545977036905010409
@@ -1544,7 +1547,7 @@ PrefabInstance:
     - target: {fileID: 8032236639422490517, guid: 613bfdcc4d4a0564db8e2ee4cc2d86f5,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1557,6 +1560,18 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 2415256309069448311}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &5126755011382340564 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7395282584394985379, guid: 613bfdcc4d4a0564db8e2ee4cc2d86f5,
+    type: 3}
+  m_PrefabInstance: {fileID: 2415256309069448311}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86d97ef2f67d80d4e963af1b4fde38b1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &3371947863662841963
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1569,6 +1584,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: GunSMG_Uzi
+      objectReference: {fileID: 0}
+    - target: {fileID: 5793199633005193874, guid: 2e38077046b87fe4fbac481264b8c52f,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7444428184221595767, guid: 2e38077046b87fe4fbac481264b8c52f,
         type: 3}

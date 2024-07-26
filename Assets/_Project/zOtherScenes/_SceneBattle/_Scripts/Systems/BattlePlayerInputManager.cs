@@ -36,4 +36,9 @@ public class BattlePlayerInputManager : MonoBehaviour
     {
         _player.SwitchToPreviousTarget();
     }
+
+    public void SwitchToNextGun()
+    {
+        _player.SwitchToNextGun();
+    }
 }

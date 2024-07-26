@@ -15,6 +15,8 @@ public class EnterBattleElement : MonoBehaviour, IBoardElement
 
     public void Apply(PlayerController playerController)
     {
+        playerController.ForceTurnEnd();
+
         playerController.Engage(_enemyCharacterStats);
     }
 

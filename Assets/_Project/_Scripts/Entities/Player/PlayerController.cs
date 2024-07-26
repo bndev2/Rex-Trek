@@ -163,7 +163,30 @@ public class PlayerController : BoardPawn
         _turnManager.MoveAdditiveOverride(this, spacesToMove);
     }
 
+    // Force the turn to end and move the payer to the end destination
+    public void ForceTurnEnd()
+    {
+        if (_waitToFinishRoutine != null)
+        {
+            StopCoroutine (_waitToFinishRoutine);
+        }
 
+        if(_path.Count > 0)
+        {
+            transform.position = _path[_path.Count - 1];
+        }
+
+        _onMoveEnd.Invoke();
+
+        ChangeState(PawnState.Idle);
+
+        _path.Clear();
+
+        _waitToFinishRoutine = null;
+
+        _turnManager.OnFinishMove(this);
+        
+    }
     public void GiveTurns(int turnsToAdd)
     {
         Debug.Log("Heres some turns");
@@ -172,7 +195,7 @@ public class PlayerController : BoardPawn
 
     public void Engage(CharacterStats opponentStats)
     {
-       GameManager.Instance.EnterBattle(this._characterStats, opponentStats);
+       GameManager.Instance.EnterBattle(this._characterStats, opponentStats, destructibleCaller: destructibleCaller);
     }
 
     private void UpdateUI()

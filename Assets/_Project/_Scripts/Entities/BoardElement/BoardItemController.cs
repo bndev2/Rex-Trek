@@ -11,14 +11,7 @@ public class BoardItemController : MonoBehaviour
 
     private void OnValidate()
     {
-        if (_boardElementGo != null)
-        {
-            foreach (var comp in _boardElementGo.GetComponents<IBoardElement>())
-            {
-                _boardElement = comp.Clone();
-                break;
-            }
-        }
+
     }
 
 
@@ -54,10 +47,10 @@ public class BoardItemController : MonoBehaviour
 
         _animator.Play("PotionApply");
 
-        // Get the length of the current animation clip
-        float animationLength = _animator.GetCurrentAnimatorStateInfo(0).length;
+            // Get the length of the current animation clip
+            float animationLength = _animator.GetCurrentAnimatorStateInfo(0).length;
 
-        StartCoroutine(DestroyAfterSeconds(this.gameObject, animationLength));
+            StartCoroutine(DestroyAfterSeconds(this.gameObject, animationLength));
     }
 
     // Coroutine to destroy the object after a delay

@@ -2,15 +2,14 @@ using MyAssets;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using static UnityEditor.Experimental.GraphView.GraphView;
 
 public class PlayerBattler : Battler, IHasGun
 {
-
-    [SerializeField] Animator _animator;
+    [SerializeField] private Animator _animator;
     [SerializeField] private AudioSource _audioSource;
     [SerializeField] private AudioClip _playerTurnStart;
 
+    [SerializeField] private List<Gun> _guns;
     [SerializeField] private Gun _gun;
 
     [SerializeField] private DamageFlash _damageFlash;
@@ -18,16 +17,15 @@ public class PlayerBattler : Battler, IHasGun
 
     public override void OnWin()
     {
-        //_animator.Play("Dance");
-        _gun.gameObject.SetActive(false);
+        _gun?.gameObject.SetActive(false);
     }
 
     public override void OnPlayerTurnStart()
     {
-        _audioSource.PlayOneShot(_playerTurnStart);
+        _audioSource?.PlayOneShot(_playerTurnStart);
         _canAttack = true;
 
-        if(_currentTarget == null)
+        if (_currentTarget == null)
         {
             //_currentTarget = _manager.battlers.Peek();
         }
@@ -35,7 +33,7 @@ public class PlayerBattler : Battler, IHasGun
 
     public override void Attack(Battler battler)
     {
-        if(_manager.currentBattler != this)
+        if (_manager?.currentBattler != this)
         {
             return;
         }
@@ -45,15 +43,7 @@ public class PlayerBattler : Battler, IHasGun
 
     public override void AttackCurrent()
     {
-        if (_canAttack == false)
-        {
-            return;
-        }
-        if (_manager.currentBattler != this)
-        {
-            return;
-        }
-        if(_currentTarget == null)
+        if (!_canAttack || _manager?.currentBattler != this || _currentTarget == null)
         {
             return;
         }
@@ -73,20 +63,14 @@ public class PlayerBattler : Battler, IHasGun
         _manager.OnMoveExecution(this, _currentTarget);
     }
 
-
     public override void Run()
     {
         // Player specific behaviour eg animation
 
-        // Coroutibe
+        // Coroutine
 
         // Switch to the regular overworld
         GameManager.Instance.ChangeState(LevelState.Overworld);
-    }
-
-    protected override void UpdateUI()
-    {
-
     }
 
     public void Shoot(Battler battler)
@@ -126,17 +110,52 @@ public class PlayerBattler : Battler, IHasGun
         _currentTarget.Damage(5);
     }
 
-    public override void Damage(float damage)
+    protected override void UpdateUI()
     {
-        if(_damageFlash != null)
+
+    }
+
+    public void ShootAtTarget(Battler battler)
+    {
+        if (_manager?.currentBattler != this)
         {
-            _damageFlash.PlayFlash();
+            return;
         }
 
-        if (_sfxDamage != null)
+        // gun specific behaviour eg firing
+
+        //coroutine delay
+
+        // Tell the battle manager
+        _manager.OnMoveExecution(this, battler);
+
+        // damage the target
+        battler.Damage(5);
+    }
+
+    public void ShootAtCurrentTarget()
+    {
+        if (_manager?.currentBattler != this)
         {
-            SoundFXManager.instance.PlaySoundAtTransform(_sfxDamage, transform);
+            return;
         }
+
+        // gun specific behaviour eg firing
+
+        //coroutine delay
+
+        // Tell the battle manager
+        _manager.OnMoveExecution(this, _currentTarget);
+
+        // damage the target
+        _currentTarget.Damage(5);
+    }
+
+    public override void Damage(float damage)
+    {
+        _damageFlash?.PlayFlash();
+
+        SoundFXManager.instance.PlaySoundAtTransform(_sfxDamage, transform);
 
         float actualDamage = damage - stats.level * 2;
 
@@ -147,7 +166,7 @@ public class PlayerBattler : Battler, IHasGun
 
     public void SwitchToNextTarget()
     {
-        if (_manager.currentBattler != this)
+        if (_manager?.currentBattler != this)
         {
             return;
         }
@@ -159,7 +178,7 @@ public class PlayerBattler : Battler, IHasGun
 
     public void SwitchToPreviousTarget()
     {
-        if (_manager.currentBattler != this)
+        if (_manager?.currentBattler != this)
         {
             return;
         }
@@ -169,7 +188,35 @@ public class PlayerBattler : Battler, IHasGun
         Debug.Log(_currentTarget.stats.id);
     }
 
-    void Start() {
-        _currentTarget = _manager.enemy;
+    public void SwitchToNextGun()
+    {
+        if(_canAttack == false)
+        {
+            return;
+        }
+
+        int _currentGunIndex = _guns.IndexOf(_gun);
+
+        if (_currentGunIndex == _guns.Count - 1)
+        {
+            _gun.Unequip();
+
+            _gun = _guns[0];
+
+            _gun.Equip();
+
+            return;
+        }
+
+        _gun.Unequip();
+
+        _gun = _guns[_currentGunIndex + 1];
+
+        _gun.Equip();
+    }
+
+    void Start()
+    {
+        _currentTarget = _manager?.enemy;
     }
 }

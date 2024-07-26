@@ -4,6 +4,12 @@ using UnityEngine;
 
 public class Gun : MonoBehaviour
 {
+    [SerializeField] private int _ammo = 12;
+    public int ammo
+    {
+        get { return _ammo; }
+    }
+
     [SerializeField] private int _damage = 5;
     [SerializeField] private int _fireAmount = 3;
     [SerializeField] private float _timeBetweenShots = .5f;
@@ -32,6 +38,15 @@ public class Gun : MonoBehaviour
         target.Damage(_damage * dmgMultiplier);
     }
 
+    public void Unequip()
+    {
+        this.gameObject.SetActive(false);
+    }
+
+    public void Equip()
+    {
+        this.gameObject.SetActive(true);
+    }
 
     private IEnumerator HandleFiring(Battler origin, Battler target, float dmgMultiplier)
     {

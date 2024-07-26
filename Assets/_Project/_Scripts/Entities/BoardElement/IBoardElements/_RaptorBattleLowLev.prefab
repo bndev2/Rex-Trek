@@ -45,8 +45,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _isEnemyTypeRandom: 1
-  _minLevel: 6
-  _maxLevel: 7
+  _minLevel: 1
+  _maxLevel: 2
   _enemyCharacterStats:
     traceID: 
     _money: 20
